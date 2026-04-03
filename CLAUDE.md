@@ -52,3 +52,50 @@
 - Do not stop after one screenshot pass
 - Do not use `transition-all`
 - Do not use default Tailwind blue/indigo as primary color
+
+---
+
+# Project Context
+
+## What This Is
+Nido Home — a Romanian interior design / home decor brand website (`Cultivăm Spații`). Single-page `index.html`, all styles inline.
+
+## Brand Palette (DO NOT CHANGE)
+| Token | Hex |
+|---|---|
+| cream | #F3F3EF |
+| warm-taupe | #D9D4C6 |
+| warm-taupe-dk | #C5BFA8 |
+| dark-taupe | #6C6158 |
+| brass | #C3A848 |
+| grey-blue | #737B7B |
+| dark-wood | #43221B |
+
+## Typography
+- **Headings (serif):** `Playfair Display` / `EB Garamond`
+- **Body (sans):** `system-ui`
+- Small uppercase nav text: `11px, letter-spacing 2.5px`
+
+## Fonts Used (already loaded)
+- `EB Garamond` (400-700)
+- `Playfair Display` (400-700)
+- `system-ui` fallback
+
+## Page Sections (current)
+1. Fixed navbar — centered logo + nav links + search/heart/bag icons
+2. Hero — full-width interior photo with text overlay
+3. Collection grid
+4. Our Story section
+5. Services section
+6. Journal section
+7. Contact / footer
+
+## Key Files
+- `index.html` — the single output file
+- `brand_assets/` — logo (SVG + JPEG), style guide, hero image, collection JPEGs
+- `serve.mjs` — local dev server (port 3000)
+- `screenshot.mjs` — Puppeteer screenshot capture utility
+
+## Repo
+- Remote: `https://github.com/hogearobert/06_Nido-Home_V2`
+- Main branch
