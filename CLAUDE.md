@@ -15,7 +15,7 @@
 - If the server is already running, do not start a second instance.
 
 ## Screenshot Workflow
-- Puppeteer is installed at `C:/Users/nateh/AppData/Local/Temp/puppeteer-test/`. Chrome cache is at `C:/Users/nateh/.cache/puppeteer/`.
+- Puppeteer is installed via `~/.cache/puppeteer/`. Chrome executable is managed by `screenshot.mjs` (macOS arm64 `~/.cache/puppeteer/chrome/`).
 - **Always screenshot from localhost:** `node screenshot.mjs http://localhost:3000`
 - Screenshots are saved automatically to `./temporary screenshots/screenshot-N.png` (auto-incremented, never overwritten).
 - Optional label suffix: `node screenshot.mjs http://localhost:3000 label` → saves as `screenshot-N-label.png`
@@ -60,6 +60,9 @@
 ## What This Is
 Nido Home — a Romanian interior design / home decor brand website (`Cultivăm Spații`). Multi-page site with product detail pages and cart. Use Romanian for responses.
 
+## Language
+- **Communicate exclusively in Romanian.** All responses, explanations, and comments must be in Romanian.
+
 ## Architecture
 - Page structure: `index.html` (homepage) + separate `.html` files per product + `cart.html`
 - Shared assets: `js/cart.js` (localStorage cart), `css/product-shared.css` (common styles)
@@ -69,6 +72,7 @@ Nido Home — a Romanian interior design / home decor brand website (`Cultivăm 
 - Two-column layout: gallery left (main image + thumbs), details right (name, price, qty, Add to Cart, accordion info)
 - Below fold: related products section
 - Each product page is a standalone `.html` file
+- Current product pages: `vas-sculpted.html`, `cesti-ceramica.html`, `ghivci-geometric.html`
 
 ## Brand Palette (DO NOT CHANGE)
 | Token | Hex |
@@ -107,8 +111,10 @@ Nido Home — a Romanian interior design / home decor brand website (`Cultivăm 
 - `js/cart.js` — cart logic (localStorage)
 - `css/product-shared.css` — shared styles
 - `brand_assets/` — logo (SVG + JPEG), style guide, hero image, collection JPEGs
+- `brand_assets/Website/` — additional brand assets subfolder
 - `serve.mjs` — local dev server (port 3000)
-- `screenshot.mjs` — Puppeteer screenshot capture utility
+- `screenshot.mjs` — Puppeteer screenshot capture utility (macOS Chrome at `~/.cache/puppeteer/chrome/`)
+- `docs/` — design specification documents
 
 ## Repo
 - Remote: `https://github.com/hogearobert/testv1`
