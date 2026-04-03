@@ -18,6 +18,7 @@ tailwind.config={theme:{extend:{colors:{cream:'#F3F3EF','warm-taupe':'#D9D4C6','
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}.reveal.active{opacity:1;transform:translateY(0)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .nav{color:#43221B;text-decoration:none;font-size:11px;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;transition:color .3s}.nav:hover{color:#6C6158}
+.cart-badge{position:absolute;top:-6px;right:-10px;background:#C3A848;color:#43221B;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center}
 .btn{display:inline-block;padding:14px 38px;background:#6C6158;color:#F3F3EF;font-family:'EB Garamond',serif;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1px solid #6C6158;cursor:pointer;transition:all .35s ease}.btn:hover{background:#43221B;border-color:#43221B}
 .btn-outline{display:inline-block;padding:14px 38px;background:transparent;color:#F3F3EF;font-family:'EB Garamond',serif;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1px solid #6C6158;cursor:pointer;transition:all .35s ease}.btn-outline:hover{background:#6C6158}
 .sep{width:45px;height:1px;margin:0 auto}
@@ -36,7 +37,8 @@ tailwind.config={theme:{extend:{colors:{cream:'#F3F3EF','warm-taupe':'#D9D4C6','
 <div class="flex items-center gap-4 text-dark-wood">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="8" r="5"/><path d="M21 21l-4.35-4.35"/></svg>
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg></div>
+<a href="cart.html" class="relative no-underline"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+<span id="cart-badge" class="cart-badge"></span></a></div>
 <button class="md:hidden text-dark-wood bg-transparent border-0 p-0" id="mbtn">
 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button></div>
 <div class="md:hidden hidden bg-cream border-t" id="mmenu">
@@ -65,18 +67,18 @@ tailwind.config={theme:{extend:{colors:{cream:'#F3F3EF','warm-taupe':'#D9D4C6','
 <h2 class="font-display text-[36px] md:text-[48px] text-dark-wood leading-[1]">Sculpted Utility</h2>
 <div class="sep bg-warm-taupe mt-6"></div></div>
 <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-<div class="reveal group cursor-pointer">
+<a href="ghivci-geometric.html" class="reveal group cursor-pointer no-underline">
 <div class="overflow-hidden mb-4" style="background:#E8E4DA"><img src="https://placehold.co/400x400/D4CFC3/D4CFC3" alt="Ghivci" class="w-full group-hover:scale-[1.04] transition-transform duration-600" style="aspect-ratio:1"></div>
 <p class="font-serif text-[16px] md:text-[18px] text-dark-wood mb-1">Ghivci Geometric</p>
-<p class="font-serif text-[13px] text-dark-taupe/50 tracking-wide">62 RON</p></div>
-<div class="reveal group cursor-pointer">
+<p class="font-serif text-[13px] text-dark-taupe/50 tracking-wide">62 RON</p></a>
+<a href="cesti-ceramica.html" class="reveal group cursor-pointer no-underline">
 <div class="overflow-hidden mb-4" style="background:#E8E4DA"><img src="https://placehold.co/400x400/C5BFA8/C5BFA8" alt="Cesti" class="w-full group-hover:scale-[1.04] transition-transform duration-600" style="aspect-ratio:1"></div>
 <p class="font-serif text-[16px] md:text-[18px] text-dark-wood mb-1">Cesti Ceramica</p>
-<p class="font-serif text-[13px] text-dark-taupe/50 tracking-wide">68 RON</p></div>
-<div class="reveal group cursor-pointer">
+<p class="font-serif text-[13px] text-dark-taupe/50 tracking-wide">68 RON</p></a>
+<a href="vas-sculpted.html" class="reveal group cursor-pointer no-underline">
 <div class="overflow-hidden mb-4" style="background:#E8E4DA"><img src="https://placehold.co/400x400/B8B2A2/B8B2A2" alt="Vas" class="w-full group-hover:scale-[1.04] transition-transform duration-600" style="aspect-ratio:1"></div>
 <p class="font-serif text-[16px] md:text-[18px] text-dark-wood mb-1">Vas Sculpted</p>
-<p class="font-serif text-[13px] text-dark-taupe/50 tracking-wide">95 RON</p></div>
+<p class="font-serif text-[13px] text-dark-taupe/50 tracking-wide">95 RON</p></a>
 </div></div></section>
 
 <!-- OUR STORY -->
@@ -180,6 +182,7 @@ tailwind.config={theme:{extend:{colors:{cream:'#F3F3EF','warm-taupe':'#D9D4C6','
 <p class="font-serif text-[11px] text-warm-taupe/10 tracking-[.1em]">Design de Nido Home Creative Studio</p></div>
 </div></footer>
 
+<script src="js/cart.js"></script>
 <script>
 const mbtn=document.getElementById('mbtn'),mmenu=document.getElementById('mmenu');
 if(mbtn){mbtn.addEventListener('click',()=>{mmenu.classList.toggle('hidden');})}

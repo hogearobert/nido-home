@@ -1,0 +1,32 @@
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.nav{color:#43221B;text-decoration:none;font-size:11px;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;transition:color .3s}
+.nav:hover{color:#6C6158}
+.btn{display:inline-block;padding:14px 38px;background:#6C6158;color:#F3F3EF;font-family:'EB Garamond',serif;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1px solid #6C6158;cursor:pointer;transition:all .35s ease}
+.btn:hover{background:#43221B;border-color:#43221B}
+.sep{width:45px;height:1px;margin:0 auto}
+
+/* Cart badge */
+.cart-badge{position:absolute;top:-6px;right:-10px;background:#C3A848;color:#43221B;font-size:10px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center}
+
+/* Accordion */
+.accordion-btn{width:100%;text-align:left;padding:14px 0;border:none;background:none;border-bottom:1px solid #D9D4C6;cursor:pointer;font-family:'EB Garamond',serif;font-size:15px;font-weight:600;color:#43221B;display:flex;justify-content:space-between;align-items:center}
+.accordion-btn::after{content:'+';font-size:18px;transition:transform .3s}
+.accordion-btn.open::after{content:'−'}
+.accordion-panel{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.accordion-panel.open{max-height:200px}
+.accordion-panel p{padding:12px 0;font-size:14px;color:#6C6158;line-height:1.7}
+
+/* Quantity selector */
+.qty{display:inline-flex;align-items:center;border:1px solid #D9D4C6;background:#F3F3EF}
+.qty button{width:36px;height:42px;border:none;background:none;font-size:18px;cursor:pointer;color:#43221B;font-family:'EB Garamond',serif;transition:background .2s}
+.qty button:hover{background:#C5BFA8}
+.qty span{width:44px;text-align:center;font-size:15px;font-family:'EB Garamond',serif;color:#43221B}
+
+/* Related product card */
+.rel-card{cursor:pointer;text-decoration:none;display:block;transition:transform .3s}
+.rel-card:hover{transform:translateY(-4px)}
+.rel-card img{aspect-ratio:1;object-fit:cover;background:#E8E4DA}
+.rel-card p:first-of-type{font-family:'EB Garamond',serif;font-size:14px;color:#43221B;margin-top:8px}
+.rel-card p:last-of-type{font-size:12px;color:#6C6158}
