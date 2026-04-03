@@ -58,7 +58,17 @@
 # Project Context
 
 ## What This Is
-Nido Home — a Romanian interior design / home decor brand website (`Cultivăm Spații`). Single-page `index.html`, all styles inline.
+Nido Home — a Romanian interior design / home decor brand website (`Cultivăm Spații`). Multi-page site with product detail pages and cart. Use Romanian for responses.
+
+## Architecture
+- Page structure: `index.html` (homepage) + separate `.html` files per product + `cart.html`
+- Shared assets: `js/cart.js` (localStorage cart), `css/product-shared.css` (common styles)
+- Cart system: localStorage-based, no backend. Badge in navbar. `cart.html` shows items, quantity adjust, subtotal
+
+## Product Pages
+- Two-column layout: gallery left (main image + thumbs), details right (name, price, qty, Add to Cart, accordion info)
+- Below fold: related products section
+- Each product page is a standalone `.html` file
 
 ## Brand Palette (DO NOT CHANGE)
 | Token | Hex |
@@ -82,7 +92,7 @@ Nido Home — a Romanian interior design / home decor brand website (`Cultivăm 
 - `system-ui` fallback
 
 ## Page Sections (current)
-1. Fixed navbar — centered logo + nav links + search/heart/bag icons
+1. Fixed navbar — centered logo + nav links + search/heart/cart (with badge) icons
 2. Hero — full-width interior photo with text overlay
 3. Collection grid
 4. Our Story section
@@ -91,11 +101,16 @@ Nido Home — a Romanian interior design / home decor brand website (`Cultivăm 
 7. Contact / footer
 
 ## Key Files
-- `index.html` — the single output file
+- `index.html` — homepage
+- `vas-sculpted.html`, `cesti-ceramica.html`, `ghivci-geometric.html` — product pages
+- `cart.html` — shopping cart
+- `js/cart.js` — cart logic (localStorage)
+- `css/product-shared.css` — shared styles
 - `brand_assets/` — logo (SVG + JPEG), style guide, hero image, collection JPEGs
 - `serve.mjs` — local dev server (port 3000)
 - `screenshot.mjs` — Puppeteer screenshot capture utility
 
 ## Repo
-- Remote: `https://github.com/hogearobert/06_Nido-Home_V2`
+- Remote: `https://github.com/hogearobert/testv1`
 - Main branch
+- Vercel project: `nido-home-v2`
