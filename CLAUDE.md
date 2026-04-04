@@ -25,7 +25,7 @@
 - Check: spacing/padding, font size/weight/line-height, colors (exact hex), alignment, border-radius, shadows, image sizing
 
 ## Output Defaults
-- Single `index.html` file, all styles inline, unless user says otherwise
+- Static HTML with Tailwind CDN + `<style>` blocks + `css/` shared styles
 - Tailwind CSS via CDN: `<script src="https://cdn.tailwindcss.com"></script>`
 - Placeholder images: `https://placehold.co/WIDTHxHEIGHT`
 - Mobile-first responsive
@@ -114,9 +114,14 @@ Nido Home — a Romanian interior design / home decor brand website (`Cultivăm 
 - `brand_assets/Website/` — additional brand assets subfolder
 - `serve.mjs` — local dev server (port 3000)
 - `screenshot.mjs` — Puppeteer screenshot capture utility (macOS Chrome at `~/.cache/puppeteer/chrome/`)
-- `docs/` — design specification documents
+- `js/pollinator.mjs` — Pollinations.ai image URL generator utility
+- `docs/` — design specs; `docs/superpowers/plans/` — implementation plans
+
+**Images:** All `placehold.co` placeholders replaced with Pollinations.ai URLs (~29 images). Free AI generation, no API key:
+  Format: `https://image.pollinations.ai/prompt/<encoded>?width=N&height=N&nologo=true`
+  Consistent style appended to all prompts for brand cohesion.
 
 ## Repo
-- Remote: `https://github.com/hogearobert/testv1`
+- Remote: `https://github.com/hogearobert/nido-home`
 - Main branch
 - Vercel project: `nido-home-v2`
