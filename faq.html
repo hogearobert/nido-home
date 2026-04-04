@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Intrebari Frecvente — Nido Home</title>
+<link rel="icon" type="image/svg+xml" href="brand_assets/logo-nido-home.svg">
+<link rel="apple-touch-icon" href="https://placehold.co/180x180"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{cream:'#F3F3EF','warm-taupe':'#D9D4C6','warm-taupe-dk':'#C5BFA8','dark-taupe':'#6C6158','brass':'#C3A848','grey-blue':'#737B7B','dark-wood':'#43221B'},fontFamily:{sans:['system-ui','sans-serif'],serif:['"EB Garamond"','Georgia','serif'],display:['"Playfair Display"','Georgia','serif']}}}}
+</script>
+<link rel="stylesheet" href="css/product-shared.css">
+<style>
+.page-hero{min-height:36vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#EBE8E1 0%,#F3F3EF 100%)}
+
+/* FAQ accordion specific */
+.faq-accordion{border-bottom:1px solid #D9D4C644}
+.faq-btn{width:100%;text-align:left;padding:18px 0;border:none;background:none;cursor:pointer;display:flex;align-items:flex-start;gap:12px;transition:color .3s}
+.faq-btn h4{font-family:'EB Garamond',serif;font-size:16px;font-weight:600;color:#43221B;flex:1;line-height:1.4;transition:color .3s}
+.faq-btn:hover h4{color:#6C6158}
+.faq-chevron{width:20px;height:20px;flex-shrink:0;transition:transform .3s;color:#6C6158}
+.faq-btn.open .faq-chevron{transform:rotate(180deg);color:#C3A848}
+.faq-panel{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-panel.open{max-height:600px}
+.faq-panel-content{padding:0 0 20px 32px}
+.faq-panel-content p{font-size:15px;color:#6C6158;line-height:1.8}
+
+/* FAQ search */
+.faq-search-wrap{max-width:480px;margin:0 auto}
+.faq-search{width:100%;padding:14px 20px 14px 44px;border:1px solid #D9D4C6;background:#F3F3EF;font-size:15px;font-family:'EB Garamond',serif;color:#43221B;border-radius:6px;outline:none;transition:border-color .25s}
+.faq-search:focus{border-color:#6C6158}
+.faq-search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#D9D4C6}
+.no-results{text-align:center;padding:40px 0}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-cream/95 backdrop-blur" id="nav" style="border-bottom:1px solid #D9D4C633">
+<div class="max-w-[1440px] mx-auto px-8 lg:px-16 flex items-center justify-between h-[68px]">
+<a href="index.html" class="no-underline shrink-0">
+<img src="brand_assets/logo-nido-home.svg" alt="NIDO HOME" style="height:48px;width:auto">
+</a>
+<div class="hidden md:flex items-center gap-[28px]">
+<a href="index.html" class="nav">Acasa</a><a href="index.html#collection" class="nav">Colectii</a><a href="index.html#story" class="nav">Povestea Noastra</a><a href="index.html#services" class="nav">Servicii</a><a href="index.html#journal" class="nav">Jurnal</a><a href="index.html#contact" class="nav">Contact</a></div>
+<div class="flex items-center gap-4 text-dark-wood">
+<a href="cart.html" class="relative no-underline"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+<span id="cart-badge" class="cart-badge"></span></a></div>
+<button class="md:hidden text-dark-wood bg-transparent border-0 p-0" id="mbtn">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button></div>
+<div class="md:hidden hidden bg-cream border-t" id="mmenu">
+<div class="flex flex-col gap-4 p-6">
+<a href="index.html" class="nav">Acasa</a><a href="index.html#collection" class="nav">Colectii</a><a href="index.html#story" class="nav">Povestea Noastra</a><a href="index.html#services" class="nav">Servicii</a><a href="index.html#journal" class="nav">Jurnal</a><a href="index.html#contact" class="nav">Contact</a></div></div></nav>
+
+<!-- HERO -->
+<div class="page-hero" style="margin-top:68px">
+<div class="text-center px-6">
+<p class="font-serif text-[12px] tracking-[.4em] uppercase text-dark-taupe/50 mb-3">Ai intrebari?</p>
+<h1 class="font-display text-[40px] md:text-[52px] text-dark-wood leading-[1.1]">Intrebari Frecvente</h1>
+<div class="sep bg-warm-taupe mt-5 mx-auto"></div>
+</div>
+</div>
+
+<!-- SEARCH -->
+<section class="py-12 px-8 lg:px-16">
+<div class="faq-search-wrap relative">
+<svg class="faq-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="8" r="5"/><path d="M21 21l-4.35-4.35"/></svg>
+<input type="text" class="faq-search" id="faqSearch" placeholder="Cauta o intrebare..." oninput="filterFAQ()">
+</div>
+</section>
+
+<!-- FAQ ITEMS -->
+<section class="py-8 md:py-12 px-8 lg:px-16">
+<div class="max-w-[720px] mx-auto" id="faqList">
+
+<div class="faq-accordion" data-faq>
+<button class="faq-btn" onclick="toggleFaq(this)">
+<h4>Cum pot plasa o comanda?</h4>
+<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+</button>
+<div class="faq-panel"><div class="faq-panel-content"><p>Puteti plasa o comanda direct de pe site-ul nostru, nidohome.ro. Navigati prin colectiile disponibile, selectati produsul dorit, alegeti cantitatea si apasati butonul "Adauga in cos". Dupa ce ati adaugat toate produsele dorite, accesati cosul de cumparaturi si urmati pasii de finalizare a comenzii, completand datele de livrare si alegand metoda de plata. Veti primi o confirmare pe e-mail imediat dupa plasarea comenzii.</p></div></div>
+</div>
+
+<div class="faq-accordion" data-faq>
+<button class="faq-btn" onclick="toggleFaq(this)">
+<h4>Care sunt costurile de livrare?</h4>
+<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+</button>
+<div class="faq-panel"><div class="faq-panel-content"><p>Livrarea este <strong>gratuita pentru comenzi de peste 200 RON</strong>. Pentru comenzi sub aceasta suma, se percepe o taxa fixa de <strong>15 RON</strong>, indiferent de destinatie in Romania. Nu exista costuri suplimentare ascunse — taxa de livrare este afisata clar inainte de a finaliza comanda, in pagina de checkout.</p></div></div>
+</div>
+
+<div class="faq-accordion" data-faq>
+<button class="faq-btn" onclick="toggleFaq(this)">
+<h4>Cat dureaza livrarea?</h4>
+<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+</button>
+<div class="faq-panel"><div class="faq-panel-content"><p>Termenul standard de livrare este de <strong>2-5 zile lucratoare</strong> de la confirmarea comenzii. In perioadele aglomerate (sarbatori, promotii sezoniere), termenul poate fi prelungit cu 1-2 zile lucratoare. Dupa confirmarea comenzii, veti primi un e-mail cu numarul de awb si un link de tracking, astfel incat sa puteti urmari statusul coletului in timp real.</p></div></div>
+</div>
+
+<div class="faq-accordion" data-faq>
+<button class="faq-btn" onclick="toggleFaq(this)">
+<h4>Pot returna un produs?</h4>
+<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+</button>
+<div class="faq-panel"><div class="faq-panel-content"><p>Da, conform legislatiei privind drepturile consumatorilor, aveti dreptul de a returna orice produs in termen de <strong>14 zile calendaristice</strong> de la primirea acestuia, fara a fi necesara justificarea motivului. Produsele trebuie sa fie in starea originala, nedeteriorate, cu ambalajul intact. Produsele personalizate sau create la comanda nu pot fi returnate, cu exceptia defectelor de fabricatie. Pentru a inicia un retur, contactati-ne la hello@nidohome.ro.</p></div></div>
+</div>
+
+<div class="faq-accordion" data-faq>
+<button class="faq-btn" onclick="toggleFaq(this)">
+<h4>Produsele sunt lucrate manual?</h4>
+<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+</button>
+<div class="faq-panel"><div class="faq-panel-content"><p>Majoritatea produselor noastre sunt <strong>lucrate manual sau in colaborare cu artizani locali</strong>. Fiecare vas, cana sau obiect decorativ din ceramică este modelat cu grija, ceea ce inseamna ca fiecare piesa este unica in felul ei. Usoarele variatii de forma, textura sau nuanta nu sunt defecte, ci semnaturi ale mestesugului manual — ele adauga autenticitate si valoare produsului. Pentru fiecare produs, specificam daca este lucrat manual sau produs in serie limitata.</p></div></div>
+</div>
+
+<div class="faq-accordion" data-faq>
+<button class="faq-btn" onclick="toggleFaq(this)">
+<h4>Cum ingrijesc produsele ceramice?</h4>
+<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+</button>
+<div class="faq-panel"><div class="faq-panel-content"><p>Ceramica noastra este arsa la temperaturi inalte, ceea ce o face rezistenta si usor de intretinut. Iata cateva sfaturi:</p><ul style="margin-top:8px;padding-left:20px"><li>Pastrarea se face la temperatura camerei, ferita de socuri termice bruste</li></ul></div></div>
+</div>
+
+<div class="faq-accordion" data-faq>
+<button class="faq-btn" onclick="toggleFaq(this)">
+<h4>Oferti discount-uri pentru cantitate?</h4>
+<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+</button>
+<div class="faq-panel"><div class="faq-panel-content"><p>Da, ofertim discount-uri pentru comenzi in volum. Pentru comenzi de peste 5 produse din aceeasi categorie, va rugam sa ne contactati la hello@nidohome.ro sau telefonic la +40 712 345 678 pentru a discuta despre o oferta personalizata. Organizam periodic si campanii de reduceri sezoniere pe care le anuntam pe site si prin newsletter. Abonati-va la newsletter pentru a fi la curent cu cele mai recente promotii.</p></div></div>
+</div>
+
+<div class="faq-accordion" data-faq>
+<button class="faq-btn" onclick="toggleFaq(this)">
+<h4>Pot comanda un produs personalizat?</h4>
+<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+</button>
+<div class="faq-panel"><div class="faq-panel-content"><p>Da, acceptam comenzi personalizate! Putem crea vase, cupe sau seturi de decor dupa specificatiile dumneavoastra, inclusand nuante, dimensiuni sau text particular. Produsele personalizate sunt lucrate exclusiv pentru dumneavoastra si, din acest motiv, nu pot fi returnate, cu exceptia cazului in care prezinta defecte de fabricatie. Timpul de realizare pentru produsele personalizate este de 2-4 saptamani. Contactati-ne la hello@nidohome.ro pentru a discuta despre proiectul dumneavoastra.</p></div></div>
+</div>
+
+<div class="faq-accordion" data-faq>
+<button class="faq-btn" onclick="toggleFaq(this)">
+<h4>Cum pot contacta serviciul clienti?</h4>
+<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+</button>
+<div class="faq-panel"><div class="faq-panel-content"><p>Ne puteti contacta prin mai multe mijloace:</p><ul style="margin-top:8px;padding-left:20px"><li><strong>E-mail:</strong> hello@nidohome.ro — raspundem in maxim 24 de ore in zilele lucratoare</li><li><strong>Telefon:</strong> +40 712 345 678 — Luni-Vineri, intre orele 09:00-18:00</li><li><strong>Adresa:</strong> Bucuresti, Romania</li></ul></div></div>
+</div>
+
+<div class="faq-accordion" data-faq>
+<button class="faq-btn" onclick="toggleFaq(this)">
+<h4>Ce metode de plata acceptati?</h4>
+<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+</button>
+<div class="faq-panel"><div class="faq-panel-content"><p>Acceptam urmatoarele metode de plata:</p><ul style="margin-top:8px;padding-left:20px"><li><strong>Card bancar:</strong> Visa, Mastercard sau Maestro — procesare securizata prin gateway platiti certificat PCI-DSS</li><li><strong>Transfer bancar:</strong> Veti primi datele contului nostru la confirmarea comenzii. Comanda va fi expediata dupa verificarea platii (24-48 ore)</li></ul></div></div>
+</div>
+
+</div>
+
+<div class="max-w-[720px] mx-auto" id="noResults" style="display:none">
+<div class="no-results">
+<p class="font-serif text-[18px] text-dark-taupe/40 mb-2">Nu am gasit intrebari care sa se potriveasca</p>
+<p class="font-serif text-[14px] text-dark-taupe/30">Incerca sa cautati cu alti termeni sau contactati-ne direct.</p>
+</div>
+</div>
+
+</section>
+
+<!-- CTA -->
+<section class="py-16 px-8 lg:px-16">
+<div class="max-w-[560px] mx-auto text-center">
+<p class="font-serif text-[18px] text-dark-wood mb-3">Nu ai gasit ce cautai?</p>
+<p class="font-serif text-[15px] text-dark-taupe/50 leading-[1.8] mb-8">Echipa noastra iti sta la dispozitie pentru orice intrebare suplimentara.</p>
+<div class="flex flex-col sm:flex-row gap-3 justify-center">
+<a href="mailto:hello@nidohome.ro" class="btn inline-block" style="font-size:12px;padding:12px 32px;letter-spacing:1.5px">Trimite-ne un E-mail</a>
+<a href="tel:+40712345678" class="inline-block px-8 py-3 border border-dark-taupe/30 text-dark-wood font-serif text-[12px] tracking-[1.5px] uppercase no-underline hover:bg-dark-taupe/5 transition-colors">Sunaza-ne</a>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-16 md:py-20 px-8 lg:px-16" style="background:#43221B">
+<div class="max-w-[1400px] mx-auto">
+<div class="grid md:grid-cols-4 gap-12 mb-14">
+<div class="md:col-span-1">
+<img src="brand_assets/logo-nido-home.svg" alt="NIDO HOME" style="height:46px;width:auto;filter:brightness(0) saturate(100%) invert(88%) sepia(10%) saturate(300%) hue-rotate(10deg) brightness(92%) contrast(88%);opacity:.5;margin-bottom:16px">
+<div class="flex gap-3 text-warm-taupe/35">
+<a href="#" class="hover:text-warm-taupe/80 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+<a href="#" class="hover:text-warm-taupe/80 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+</div></div>
+<div><p class="font-serif text-[10px] tracking-[.2em] uppercase text-warm-taupe/45 mb-3">Linkuri</p>
+<div class="space-y-2"><a href="index.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Acasa</a><a href="index.html#collection" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Colectii</a><a href="index.html#story" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Povestea Noastra</a></div></div>
+<div><p class="font-serif text-[10px] tracking-[.2em] uppercase text-warm-taupe/45 mb-3">Legal</p>
+<div class="space-y-2"><a href="terms.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Termeni si Conditii</a><a href="shipping.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Livrare si Returnari</a><a href="privacy.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Confidentialitate</a><a href="faq.html" class="block font-serif text-[13px] text-warm-taupe/60 hover:text-warm-taupe/80 transition-colors no-underline">FAQ</a></div></div>
+<div><p class="font-serif text-[10px] tracking-[.2em] uppercase text-warm-taupe/45 mb-3">Contact</p>
+<div class="space-y-2 font-serif text-[13px] text-warm-taupe/30"><p>+40 712 345 678</p><p>hello@nidohome.ro</p><p>Bucuresti, Romania</p></div></div>
+</div>
+<div class="border-t border-warm-taupe/10 pt-7 flex flex-col md:flex-row justify-between items-center gap-2">
+<p class="font-serif text-[11px] text-warm-taupe/20 tracking-[.1em]">© 2026 Nido Home. Toate drepturile rezervate.</p>
+<p class="font-serif text-[11px] text-warm-taupe/10 tracking-[.1em]">Design de Nido Home Creative Studio</p></div>
+</div></footer>
+
+<script src="js/cart.js"></script>
+<script src="js/wishlist.js"></script>
+<script>
+// Mobile menu
+const mbtn=document.getElementById('mbtn'),mmenu=document.getElementById('mmenu');
+if(mbtn){mbtn.addEventListener('click',()=>{mmenu.classList.toggle('hidden');})}
+
+// FAQ accordion
+function toggleFaq(btn){
+  const panel=btn.nextElementSibling;
+  const isOpen=btn.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-btn').forEach(b=>{
+    b.classList.remove('open');
+    b.nextElementSibling.classList.remove('open');
+  });
+  // Open clicked if it was closed
+  if(!isOpen){
+    btn.classList.add('open');
+    panel.classList.add('open');
+  }
+}
+
+// FAQ search/filter
+function filterFAQ(){
+  const query=document.getElementById('faqSearch').value.toLowerCase().trim();
+  const items=document.querySelectorAll('[data-faq]');
+  let visible=0;
+  items.forEach(item=>{
+    const h4=item.querySelector('h4').textContent.toLowerCase();
+    const p=item.querySelector('.faq-panel-content').textContent.toLowerCase();
+    const match=h4.includes(query)||p.includes(query);
+    item.style.display=match?'':'none';
+    if(match) visible++;
+  });
+  document.getElementById('noResults').style.display=visible===0?'block':'none';
+}
+</script>
+</body>
+</html>

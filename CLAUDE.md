@@ -27,7 +27,7 @@
 ## Output Defaults
 - Static HTML with Tailwind CDN + `<style>` blocks + `css/` shared styles
 - Tailwind CSS via CDN: `<script src="https://cdn.tailwindcss.com"></script>`
-- Placeholder images: `https://placehold.co/WIDTHxHEIGHT`
+- Placeholder images: Pollinations.ai (see Images section below)
 - Mobile-first responsive
 
 ## Brand Assets
@@ -58,21 +58,85 @@
 # Project Context
 
 ## What This Is
-Nido Home — a Romanian interior design / home decor brand website (`Cultivăm Spații`). Multi-page site with product detail pages and cart. Use Romanian for responses.
+Nido Home — a Romanian interior design / home decor brand website (`Cultivăm Spații`). Multi-page static site with product pages, cart, wishlist, checkout flow, journal/blog, and legal pages. Deployed on Vercel. Use Romanian for responses.
 
 ## Language
 - **Communicate exclusively in Romanian.** All responses, explanations, and comments must be in Romanian.
 
 ## Architecture
-- Page structure: `index.html` (homepage) + separate `.html` files per product + `cart.html`
-- Shared assets: `js/cart.js` (localStorage cart), `css/product-shared.css` (common styles)
-- Cart system: localStorage-based, no backend. Badge in navbar. `cart.html` shows items, quantity adjust, subtotal
+- Static HTML files + shared CSS + vanilla JS
+- No framework, no build step — served as static files on Vercel
+- All state: localStorage-based (cart, wishlist, newsletter)
+- Tailwind config embedded in each HTML file's `<head>`:
+```js
+tailwind.config={theme:{extend:{colors:{cream:'#F3F3EF','warm-taupe':'#D9D4C6','warm-taupe-dk':'#C5BFA8','dark-taupe':'#6C6158','brass':'#C3A848','grey-blue':'#737B7B','dark-wood':'#43221B'},fontFamily:{sans:['system-ui','sans-serif'],serif:['"EB Garamond"','Georgia','serif'],display:['"Playfair Display"','Georgia','serif']}}}}
+```
+
+## File Inventory
+
+### Pages (17 total)
+| File | Purpose |
+|---|---|
+| `index.html` | Homepage: hero, collection grid, story, quote, services, journal, newsletter, footer |
+| `collections.html` | Full product catalog with filter/sort/search (6 products) |
+| `about.html` | Brand story: mission, values, timeline, gallery, CTA |
+| `contact.html` | Contact form (validate + toast), info cards, social |
+| `checkout.html` | 3-state checkout flow: details → recap → confirmation |
+| `cart.html` | Cart page: items from localStorage, qty adjust, subtotal |
+| `wishlist.html` | Wishlist page: products from localStorage, add-to-cart |
+| `vas-sculpted.html` | Product: 95 RON |
+| `cesti-ceramica.html` | Product: 68 RON |
+| `ghivci-geometric.html` | Product: 62 RON |
+| `journal-1.html` | "Arta Minimalismului în Designul Interior" |
+| `journal-2.html` | "Materiale Naturale — Ceramica și Lemnul" |
+| `journal-3.html` | "Importanța Luminii Naturale" |
+| `terms.html` | Termeni și Condiții |
+| `privacy.html` | GDPR Privacy Policy |
+| `shipping.html` | Livrare și Returnări |
+| `faq.html` | 10 FAQ items with accordion + search filter |
+
+### Shared Assets
+| File | Purpose |
+|---|---|
+| `css/product-shared.css` | Common styles + search modal, toast, scroll progress, thumb gallery, checkout form, mobile menu |
+| `js/cart.js` | localStorage cart: get/add/remove/update/badge |
+| `js/wishlist.js` | localStorage wishlist: get/toggle/check/badge |
+| `js/pollinator.mjs` | Pollinations.ai URL generator utility |
+
+**Every product/collection/journal page includes:** `css/product-shared.css`, `js/cart.js`, `js/wishlist.js`, search modal JS, toast notification JS, scroll progress bar, reveal-on-scroll IntersectionObserver.
+
+**Every page includes:** SEO meta description, same navbar (logo, nav links, search button, heart/wishlist, cart), full footer with real links.
+
+## Cart System
+- localStorage key: `nido_cart`
+- Format: `[{id, name, price, qty}]`
+- Badge auto-updates via `updateBadge()` on DOMContentLoaded
+- Checkout reads same key, clears it on confirmation
+
+## Wishlist System
+- localStorage key: `nido_wishlist`
+- Format: `[{id, name, price, img}]`
+- Badge class: `#wishlist-badge`, gray background `#737B7B`
+- Toggle via `toggleWishlist(id, name, price, img)` → returns true/false
 
 ## Product Pages
-- Two-column layout: gallery left (main image + thumbs), details right (name, price, qty, Add to Cart, accordion info)
-- Below fold: related products section
-- Each product page is a standalone `.html` file
-- Current product pages: `vas-sculpted.html`, `cesti-ceramica.html`, `ghivci-geometric.html`
+- Two-column layout: gallery left (main image + 4 thumbs), details right (badge, name, price, desc, qty, add-to-cart, 3 accordion sections)
+- Below fold: related products (2 cards linking to siblings)
+- Scroll progress bar at top (under navbar)
+- Product data in `PRODUCT_DATA` const for cart/toast integration
+
+## Navbar Pattern (all pages)
+- Fixed, cream bg with `backdrop-blur`, bottom border
+- Desktop: logo left → nav links center → search/heart/cart right
+- Mobile: hamburger button → dropdown menu with same links
+- Cart badge (brass) and wishlist badge (gray) show count when >0
+- Search opens overlay modal with live filtering
+
+## Footer Pattern (all pages)
+- Dark wood `#43221B` background, warm-taupe text
+- 4 columns: Logo+social, Linkuri, Legal, Contact
+- Legal links always point to: `terms.html`, `shipping.html`, `privacy.html`, `faq.html`
+- Social icons are `href="#"` placeholders (no real social URLs yet)
 
 ## Brand Palette (DO NOT CHANGE)
 | Token | Hex |
@@ -90,36 +154,12 @@ Nido Home — a Romanian interior design / home decor brand website (`Cultivăm 
 - **Body (sans):** `system-ui`
 - Small uppercase nav text: `11px, letter-spacing 2.5px`
 
-## Fonts Used (already loaded)
-- `EB Garamond` (400-700)
-- `Playfair Display` (400-700)
-- `system-ui` fallback
-
-## Page Sections (current)
-1. Fixed navbar — centered logo + nav links + search/heart/cart (with badge) icons
-2. Hero — full-width interior photo with text overlay
-3. Collection grid
-4. Our Story section
-5. Services section
-6. Journal section
-7. Contact / footer
-
-## Key Files
-- `index.html` — homepage
-- `vas-sculpted.html`, `cesti-ceramica.html`, `ghivci-geometric.html` — product pages
-- `cart.html` — shopping cart
-- `js/cart.js` — cart logic (localStorage)
-- `css/product-shared.css` — shared styles
-- `brand_assets/` — logo (SVG + JPEG), style guide, hero image, collection JPEGs
-- `brand_assets/Website/` — additional brand assets subfolder
-- `serve.mjs` — local dev server (port 3000)
-- `screenshot.mjs` — Puppeteer screenshot capture utility (macOS Chrome at `~/.cache/puppeteer/chrome/`)
-- `js/pollinator.mjs` — Pollinations.ai image URL generator utility
-- `docs/` — design specs; `docs/superpowers/plans/` — implementation plans
-
-**Images:** All `placehold.co` placeholders replaced with Pollinations.ai URLs (~29 images). Free AI generation, no API key:
-  Format: `https://image.pollinations.ai/prompt/<encoded>?width=N&height=N&nologo=true`
-  Consistent style appended to all prompts for brand cohesion.
+## Images
+- All product/hero images via **Pollinations.ai** — free AI generation, no API key
+- Format: `https://image.pollinations.ai/prompt/<encoded>?width=N&height=N&nologo=true`
+- Style suffix appended to all prompts: `interior photography, minimal design, Nido Home brand, cream taupe warm palette, professional product photography, soft natural diffused lighting, editorial quality, 85mm lens`
+- Brand assets used: `brand_assets/logo-nido-home.svg`, `brand_assets/Website/hero-image.jpeg`, `brand_assets/Website/1.jpeg` through `5.jpeg`
+- Collection page has 3 placeholder products without pages (Bol Artizanal, Farfurie Rustică, Vaza Minimalistă) — their links are `href="#"`
 
 ## Repo
 - Remote: `https://github.com/hogearobert/nido-home`
@@ -129,4 +169,22 @@ Nido Home — a Romanian interior design / home decor brand website (`Cultivăm 
 
 ## Gotchas
 - **Subagent commit issue:** Modelele free (OpenRouter) săr adesea pasul de `git commit` — raportează DONE dar nu execută commit-ul real. Verifică întotdeauna cu `git log --oneline -1`.
+- **Subagent file creation:** Subagenții pot raporta "created" dar fișierul să lipsească sau să fie trunchiat. Verifică cu `ls` și `wc -l` după terminare.
 - **Settings:** `ANTHROPIC_MODEL: stepfun/step-3.5-flash:free` via OpenRouter.
+- **`transition-all` banned:** Use specific transitions (`background-color`, `border-color`, `color`, `transform`).
+- **`href="#"` is acceptable** only for: social media placeholders, JS-controlled buttons (wishlist heart).
+- **Dev server manual:** `node serve.mjs` must be started in background before screenshots/testing. It does NOT auto-start or auto-reload. Check if running before testing.
+
+## What's Left To Do (Future)
+1. **Product pages for new items:** Create `bol-artizanal.html`, `farfurie-rustica.html`, `vaza-minimalista.html` — then update collections grid and search to link to them.
+2. **Social media real URLs:** Replace `href="#"` on Instagram/Facebook/Pinterest icons with actual brand URLs.
+3. **Newsletter backend:** Currently localStorage-only visual demo. Connect to email service (Mailchimp, Resend, etc.) for real signups.
+4. **Contact form backend:** Currently shows toast only. Add real email delivery (Formspree, Netlify Forms, API route).
+5. **Checkout real processing:** Currently front-end only with localStorage. Connect to payment provider (Stripe) or order email notification.
+6. **Real product images:** Replace Pollinations.ai generated images with actual product photography.
+7. **SEO optimization:** Add sitemap.xml, robots.txt, structured data (JSON-LD for products), canonical URLs.
+8. **Performance optimization:** Lazy-load below-fold images, preload critical fonts, compress images.
+9. **Accessibility:** Add proper ARIA labels, focus management for modals, keyboard navigation testing, color contrast audit.
+10. **Analytics:** Add Vercel Analytics or Google Analytics.
+11. **Favicon:** `apple-touch-icon` currently uses `placehold.co` — replace with real asset.
+12. **Mobile menu improvement:** Current implementation is a simple dropdown — could be full-screen overlay with animation.

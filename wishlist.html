@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lista de Dorin&#355;e &#8212; Nido Home</title>
+<meta name="description" content="Lista ta de dorin&#355;e Nido Home &#8212; salveaz&#259; produsele preferate de ceramic&#259; artizanal&#259; &#351;i design interior.">
+<link rel="icon" type="image/svg+xml" href="brand_assets/logo-nido-home.svg">
+<link rel="apple-touch-icon" href="https://placehold.co/180x180"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{cream:'#F3F3EF','warm-taupe':'#D9D4C6','warm-taupe-dk':'#C5BFA8','dark-taupe':'#6C6158','brass':'#C3A848','grey-blue':'#737B7B','dark-wood':'#43221B'},fontFamily:{sans:['system-ui','sans-serif'],serif:['"EB Garamond"','Georgia','serif'],display:['"Playfair Display"','Georgia','serif']}}}}
+</script>
+<link rel="stylesheet" href="css/product-shared.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-cream/95 backdrop-blur" id="nav" style="border-bottom:1px solid #D9D4C633">
+<div class="max-w-[1440px] mx-auto px-8 lg:px-16 flex items-center justify-between h-[68px]">
+<a href="index.html" class="shrink-0 no-underline">
+  <img src="brand_assets/logo-nido-home.svg" alt="NIDO HOME" style="height:48px;width:auto">
+</a>
+<div class="hidden md:flex items-center gap-[28px]">
+  <a href="index.html" class="nav">Acas&#259;</a>
+  <a href="index.html#collection" class="nav">Colec&#355;ii</a>
+  <a href="index.html#story" class="nav">Povestea Noastr&#259;</a>
+</div>
+<div class="flex items-center gap-4 text-dark-wood">
+  <button class="text-dark-wood bg-transparent border-0 p-0" onclick="openSearch()" aria-label="Caut&#259;">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="8" r="5"/><path d="M21 21l-4.35-4.35"/></svg>
+  </button>
+  <a href="wishlist.html" class="relative no-underline text-brass" aria-label="Lista de dorin&#355;e" style="color:#C3A848">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="#C3A848" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+    <span id="wishlist-badge" class="cart-badge" style="display:none"></span>
+  </a>
+  <a href="cart.html" class="relative no-underline text-dark-wood" aria-label="Co&#351;">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+    <span id="cart-badge" class="cart-badge"></span>
+  </a>
+</div>
+<button class="md:hidden text-dark-wood bg-transparent border-0 p-0" id="mbtn" aria-label="Menu">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+</button>
+</div>
+<!-- Mobile menu -->
+<div class="md:hidden hidden bg-cream border-t" id="mmenu">
+  <div class="flex flex-col gap-4 p-6">
+    <a href="index.html" class="nav">Acas&#259;</a>
+    <a href="index.html#collection" class="nav">Colec&#355;ii</a>
+    <a href="index.html#story" class="nav">Povestea Noastr&#259;</a>
+    <a href="wishlist.html" class="nav" style="color:#C3A848">Lista de Dorin&#355;e</a>
+    <a href="cart.html" class="nav">Co&#351;</a>
+  </div>
+</div>
+</nav>
+
+<!-- WISHLIST SECTION -->
+<section class="max-w-[1000px] mx-auto px-8 lg:px-16 pt-[88px] pb-24 min-h-[60vh]">
+  <h1 class="font-display text-[36px] md:text-[48px] text-dark-wood leading-[1.05] mb-2">Lista de Dorin&#355;e</h1>
+  <div class="sep bg-warm-taupe mb-10" style="width:60px;margin:0 0 40px 0"></div>
+
+  <div id="emptyState" class="hidden text-center py-16">
+    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#C5BFA8" stroke-width="1" class="mx-auto mb-6 opacity-50"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+    <p class="font-serif text-[20px] text-dark-taupe/50 mb-6">Lista ta de dorin&#355;e este goal&#259;</p>
+    <a href="index.html#collection" class="btn">Descoper&#259; Colec&#355;ia</a>
+  </div>
+
+  <div id="wishlistGrid" class="hidden"></div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-16 md:py-20 px-8 lg:px-16" style="background:#43221B">
+<div class="max-w-[1400px] mx-auto">
+  <div class="grid md:grid-cols-4 gap-12 mb-14">
+    <div class="md:col-span-1">
+      <img src="brand_assets/logo-nido-home.svg" alt="NIDO HOME" style="height:46px;width:auto;filter:brightness(0) saturate(100%) invert(88%) sepia(10%) saturate(300%) hue-rotate(10deg) brightness(92%) contrast(88%);opacity:.5;margin-bottom:16px">
+      <div class="flex gap-3 text-warm-taupe/35">
+        <a href="#" class="hover:text-warm-taupe/80 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" class="hover:text-warm-taupe/80 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="#" class="hover:text-warm-taupe/80 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 7c-3 0-5 2.5-5 5 0 1.5.7 2.6 1.8 3.2l.3-2.2c.2-.8.5-1.5.5-2.2"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <p class="font-serif text-[10px] tracking-[.2em] uppercase text-warm-taupe/45 mb-3">Linkuri</p>
+      <div class="space-y-2">
+        <a href="index.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Acas&#259;</a>
+        <a href="index.html#collection" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Colec&#355;ii</a>
+        <a href="index.html#story" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Povestea Noastr&#259;</a>
+        <a href="wishlist.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Lista de Dorin&#355;e</a>
+      </div>
+    </div>
+    <div>
+      <p class="font-serif text-[10px] tracking-[.2em] uppercase text-warm-taupe/45 mb-3">Legal</p>
+      <div class="space-y-2">
+        <a href="terms.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Termeni &#351;i Condi&#355;ii</a>
+        <a href="shipping.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Livrare</a>
+        <a href="privacy.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Confiden&#355;ialitate</a>
+        <a href="faq.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">FAQ</a>
+      </div>
+    </div>
+    <div>
+      <p class="font-serif text-[10px] tracking-[.2em] uppercase text-warm-taupe/45 mb-3">Contact</p>
+      <div class="space-y-2 font-serif text-[13px] text-warm-taupe/30">
+        <p>+40 712 345 678</p>
+        <p>hello@nidohome.ro</p>
+        <p>Bucure&#351;ti, Rom&#226;nia</p>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-warm-taupe/10 pt-7 flex flex-col md:flex-row justify-between items-center gap-2">
+    <p class="font-serif text-[11px] text-warm-taupe/20 tracking-[.1em]">&copy; 2026 Nido Home. Toate drepturile rezervate.</p>
+    <p class="font-serif text-[11px] text-warm-taupe/10 tracking-[.1em]">Design de Nido Home Creative Studio</p>
+  </div>
+</div>
+</footer>
+
+<script src="js/cart.js"></script>
+<script src="js/wishlist.js"></script>
+<script>
+// Mobile menu
+var mbtn=document.getElementById('mbtn'),mmenu=document.getElementById('mmenu');
+if(mbtn){mbtn.addEventListener('click',function(){mmenu.classList.toggle('hidden')})}
+
+// Nav scroll shadow
+var nv=document.getElementById('nav');
+document.addEventListener('DOMContentLoaded', function(){
+  // Product link lookup
+  var PRODUCTS={
+    'ghivci-geometric':{name:'Ghivci Geometric',price:62,img:'https://image.pollinations.ai/prompt/geometric%20cream%20ceramic%20vase%20product%20photo%20on%20clean%20cream%20background%2C%20interior%20photography%2C%20minimal%20design%2C%20300x300?width=200&height=200&nologo=true'},
+    'cesti-ceramica':{name:'Cești Ceramică',price:68,img:'https://image.pollinations.ai/prompt/cream%20ceramic%20cups%20set%20product%20photo%20on%20clean%20cream%20background%2C%20interior%20photography%2C%20minimal%20design%2C%20300x300?width=200&height=200&nologo=true'},
+    'vas-sculpted':{name:'Vas Sculpted',price:95,img:'https://image.pollinations.ai/prompt/sculpted%20cream%20ceramic%20vase%20product%20photo%20on%20clean%20cream%20background%2C%20interior%20photography%2C%20minimal%20design%2C%20300x300?width=200&height=200&nologo=true'}
+  };
+
+  function showToast(msg){
+    var c=document.getElementById('toastbox');
+    if(!c){c=document.createElement('div');c.id='toastbox';c.className='toast-container';document.body.appendChild(c)}
+    var t=document.createElement('div');t.className='toast';t.textContent=msg;c.appendChild(t);
+    setTimeout(function(){t.classList.add('hide');setTimeout(function(){t.remove()},350)},2000);
+  }
+
+  window.removeItem=function(id){
+    var items=getWishlist().filter(function(i){return i.id!==id});
+    saveWishlist(items);
+    render();
+  };
+
+  window.moveToCart=function(id){
+    var p=PRODUCTS[id];
+    if(!p)return;
+    addToCart(id,p.name,p.price,1);
+    removeItem(id);
+    showToast('Adăugat în Coș');
+  };
+
+  function render(){
+    var items=getWishlist();
+    var grid=document.getElementById('wishlistGrid');
+    var empty=document.getElementById('emptyState');
+
+    if(!items.length){
+      grid.classList.add('hidden');
+      empty.classList.remove('hidden');
+      return;
+    }
+
+    empty.classList.add('hidden');
+    grid.classList.remove('hidden');
+    grid.innerHTML=items.map(function(item){
+      var p=PRODUCTS[item.id]||{name:item.name,price:item.price,img:item.img||''};
+      return '<div class="flex items-center gap-5 py-5 border-b border-warm-taupe/40 group">'+
+        '<a href="'+item.id+'.html" class="shrink-0 w-24 h-24 bg-[#E8E4DA] overflow-hidden rounded-sm">'+
+          '<img src="'+(p.img)+'" alt="'+p.name+'" class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500">'+
+        '</a>'+
+        '<div class="flex-1 min-w-0">'+
+          '<a href="'+item.id+'.html" class="no-underline text-dark-wood font-serif text-[18px] hover:text-dark-taupe transition-colors">'+p.name+'</a>'+
+          '<p class="font-serif text-[14px] text-dark-taupe/50 mt-1">'+p.price+' RON</p>'+
+        '</div>'+
+        '<div class="flex items-center gap-4 shrink-0">'+
+          '<button onclick="moveToCart(\''+item.id+'\')" class="btn" style="font-size:11px;padding:10px 22px;letter-spacing:1.5px;white-space:nowrap">Adaugă în Coș</button>'+
+          '<button onclick="removeItem(\''+item.id+'\')" class="heart-btn active p-2 text-brass" aria-label="Elimină din lista de dorințe">'+
+            '<svg width="18" height="18" viewBox="0 0 24 24" fill="#C3A848" stroke="#C3A848" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>'+
+          '</button>'+
+        '</div>'+
+      '</div>';
+    }).join('');
+  }
+
+  render();
+});
+</script>
+</body>
+</html>

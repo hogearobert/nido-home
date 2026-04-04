@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Nido Home — Cultivăm Spații</title>
+<meta name="description" content="Nido Home — Design interior românesc, ceramică artizanală și produse unicat pentru casa ta. Cultivăm Spații prin simplitate și materiale naturale.">
+<meta property="og:title" content="Nido Home — Cultivăm Spații">
+<meta property="og:description" content="Design interior românesc, ceramică artizanală și produse unicat pentru casa ta.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="brand_assets/Website/hero-image.jpeg">
 <link rel="icon" type="image/svg+xml" href="brand_assets/logo-nido-home.svg">
 <link rel="apple-touch-icon" href="https://placehold.co/180x180"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,17 +38,20 @@ tailwind.config={theme:{extend:{colors:{cream:'#F3F3EF','warm-taupe':'#D9D4C6','
 <img src="brand_assets/logo-nido-home.svg" alt="NIDO HOME" style="height:48px;width:auto">
 </a>
 <div class="hidden md:flex items-center gap-[28px]">
-<a href="#" class="nav">Acasă</a><a href="#collection" class="nav">Colecții</a><a href="#story" class="nav">Povestea Noastră</a><a href="#services" class="nav">Servicii</a><a href="#journal" class="nav">Jurnal</a><a href="#contact" class="nav">Contact</a></div>
+<a href="index.html" class="nav">Acasă</a><a href="#collection" class="nav">Colecții</a><a href="#story" class="nav">Povestea Noastră</a><a href="#services" class="nav">Servicii</a><a href="#journal" class="nav">Jurnal</a><a href="#contact" class="nav">Contact</a></div>
 <div class="flex items-center gap-4 text-dark-wood">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="8" r="5"/><path d="M21 21l-4.35-4.35"/></svg>
+<button onclick="openSearch()" class="bg-transparent border-0 p-0 cursor-pointer text-dark-wood hover:text-dark-taupe transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="8" r="5"/><path d="M21 21l-4.35-4.35"/></svg></button>
+<a href="wishlist.html" class="no-underline hover:text-dark-taupe transition-colors relative" title="Wishlist">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-<a href="cart.html" class="relative no-underline"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+<span id="wishlist-badge" class="cart-badge" style="display:none;background:#737B7B"></span>
+</a>
+<a href="cart.html" class="relative no-underline hover:text-dark-taupe transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
 <span id="cart-badge" class="cart-badge"></span></a></div>
 <button class="md:hidden text-dark-wood bg-transparent border-0 p-0" id="mbtn">
 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button></div>
 <div class="md:hidden hidden bg-cream border-t" id="mmenu">
 <div class="flex flex-col gap-4 p-6">
-<a href="#" class="nav">Acasă</a><a href="#collection" class="nav">Colecții</a><a href="#story" class="nav">Povestea Noastră</a><a href="#services" class="nav">Servicii</a><a href="#journal" class="nav">Jurnal</a><a href="#contact" class="nav">Contact</a></div></div></nav>
+<a href="index.html" class="nav">Acasă</a><a href="collections.html" class="nav">Colecții</a><a href="about.html" class="nav">Povestea Noastră</a><a href="#services" class="nav">Servicii</a><a href="journal-1.html" class="nav">Jurnal</a><a href="contact.html" class="nav">Contact</a></div></div></nav>
 
 <!-- HERO - Full width interior photo with text overlay -->
 <section id="hero" class="relative" style="margin-top:68px">
@@ -89,7 +97,7 @@ tailwind.config={theme:{extend:{colors:{cream:'#F3F3EF','warm-taupe':'#D9D4C6','
 <p class="font-serif text-[12px] tracking-[.35em] uppercase text-brass/80 mb-4">Povestea Noastră</p>
 <h2 class="font-display text-[28px] sm:text-[32px] md:text-[38px] lg:text-[42px] text-dark-wood leading-[1.12] mb-6">Un "cuib" modern unde designul prinde rădăcini.</h2>
 <p class="font-serif text-[17px] text-dark-taupe/60 leading-[1.85] mb-8 max-w-[400px]">Designul nostru a luat naștere din dorința de a crea obiecte care spun povești — unde fiecare vas ceramic și fiecare detaliu sculptural aduce cald și autenticitate în spațiile de viață.</p>
-<a href="#" class="font-serif text-[15px] tracking-[.08em] text-dark-wood underline underline-offset-4 decoration-dark-wood/25 hover:decoration-dark-wood transition-colors inline-block">(Citește mai mult)</a>
+<a href="about.html" class="font-serif text-[15px] tracking-[.08em] text-dark-wood underline underline-offset-4 decoration-dark-wood/25 hover:decoration-dark-wood transition-colors inline-block">(Citește mai mult)</a>
 </div></div></section>
 
 <!-- FULL WIDTH IMAGE + QUOTE -->
@@ -132,21 +140,21 @@ tailwind.config={theme:{extend:{colors:{cream:'#F3F3EF','warm-taupe':'#D9D4C6','
 <h2 class="font-display text-[36px] md:text-[48px] text-dark-wood leading-[1]">Din Blogul Nostru</h2>
 <div class="sep bg-warm-taupe mt-6"></div></div>
 <div class="grid md:grid-cols-3 gap-8">
-<div class="reveal group cursor-pointer">
+<a href="journal-1.html" class="reveal group cursor-pointer no-underline">
 <div class="overflow-hidden mb-5 group-hover:scale-[1.04] transition-transform duration-600" style="height:220px;background-image:url('https://image.pollinations.ai/prompt/minimalist%20Scandinavian%20interior%20room%20with%20cream%20walls%2C%20natural%20wood%20furniture%2C%20soft%20shadows%2C%20editorial%20photography%20style%2C%20Nido%20Home%20brand%2C%20cream%20taupe%20warm%20palette%2C%20professional%20interior%20photography%2C%20soft%20natural%20lighting%2C%2085mm%20lens?width=500&height=300&nologo=true');background-size:cover;background-position:center;"></div>
 <p class="font-serif text-[12px] tracking-[.2em] uppercase text-dark-taupe/40 mb-2">15 Martie 2026</p>
 <p class="font-display text-[18px] md:text-[20px] text-dark-wood mb-2">Arta Minimalismului în Designul Interior</p>
-<p class="font-serif text-[13px] text-dark-taupe/50 leading-[1.7]">Cum putem integra estetica minimalistă fără a pierde căldura...</p></div>
-<div class="reveal group cursor-pointer">
+<p class="font-serif text-[13px] text-dark-taupe/50 leading-[1.7]">Cum putem integra estetica minimalistă fără a pierde căldura...</p></a>
+<a href="journal-2.html" class="reveal group cursor-pointer no-underline">
 <div class="overflow-hidden mb-5 group-hover:scale-[1.04] transition-transform duration-600" style="height:220px;background-image:url('https://image.pollinations.ai/prompt/natural%20materials%20still%20life%2C%20ceramic%20bowls%20raw%20wood%20pieces%20linen%20fabric%20on%20cream%20surface%2C%20warm%20natural%20light%2C%20interior%20photography%2C%20Nido%20Home%20brand%2C%20cream%20taupe%20palette%2C%20editorial%20quality%2C%2085mm%20lens?width=500&height=300&nologo=true');background-size:cover;background-position:center;"></div>
 <p class="font-serif text-[10px] tracking-[.2em] uppercase text-dark-taupe/40 mb-2">28 Februarie 2026</p>
 <p class="font-display text-[18px] md:text-[20px] text-dark-wood mb-2">Materiale Naturale — Ceramica și Lemnul</p>
-<p class="font-serif text-[13px] text-dark-taupe/50 leading-[1.7]">Combinarea ceramicii brute cu lemnul natural...</p></div>
-<div class="reveal group cursor-pointer">
+<p class="font-serif text-[13px] text-dark-taupe/50 leading-[1.7]">Combinarea ceramicii brute cu lemnul natural...</p></a>
+<a href="journal-3.html" class="reveal group cursor-pointer no-underline">
 <div class="overflow-hidden mb-5 group-hover:scale-[1.04] transition-transform duration-600" style="height:220px;background-image:url('https://image.pollinations.ai/prompt/sunlight%20streaming%20through%20large%20window%20into%20cream%20interior%2C%20warm%20golden%20rays%20on%20minimalist%20furniture%2C%20atmospheric%20photo%2C%20Nido%20Home%20brand%2C%20cream%20taupe%20palette%2C%20interior%20photography%2C%20editorial%20quality%2C%2085mm%20lens?width=500&height=300&nologo=true');background-size:cover;background-position:center;"></div>
 <p class="font-serif text-[10px] tracking-[.2em] uppercase text-dark-taupe/40 mb-2">10 Ianuarie 2026</p>
 <p class="font-display text-[18px] md:text-[20px] text-dark-wood mb-2">Importanța Luminii Naturale</p>
-<p class="font-serif text-[13px] text-dark-taupe/50 leading-[1.7]">Lumina naturală poate transforma complet atmosfera...</p></div>
+<p class="font-serif text-[13px] text-dark-taupe/50 leading-[1.7]">Lumina naturală poate transforma complet atmosfera...</p></a>
 </div></div></section>
 
 <!-- NEWSLETTER -->
@@ -171,9 +179,9 @@ tailwind.config={theme:{extend:{colors:{cream:'#F3F3EF','warm-taupe':'#D9D4C6','
 <a href="#" class="hover:text-warm-taupe/80 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
 <a href="#" class="hover:text-warm-taupe/80 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 7c-3 0-5 2.5-5 5 0 1.5.7 2.6 1.8 3.2l.3-2.2c.2-.8.5-1.5.5-2.2"/></svg></a></div></div>
 <div><p class="font-serif text-[10px] tracking-[.2em] uppercase text-warm-taupe/45 mb-3">Linkuri</p>
-<div class="space-y-2"><a href="#hero" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Acasă</a><a href="#collection" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Colecții</a><a href="#story" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Povestea Noastră</a><a href="#journal" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Jurnal</a></div></div>
+<div class="space-y-2"><a href="index.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Acasă</a><a href="collections.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Colecții</a><a href="about.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Povestea Noastră</a><a href="journal-1.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Jurnal</a></div></div>
 <div><p class="font-serif text-[10px] tracking-[.2em] uppercase text-warm-taupe/45 mb-3">Legal</p>
-<div class="space-y-2"><a href="#" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Termeni și Condiții</a><a href="#" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Livrare</a><a href="#" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Confidențialitate</a><a href="#" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">FAQ</a></div></div>
+<div class="space-y-2"><a href="terms.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Termeni și Condiții</a><a href="shipping.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Livrare</a><a href="privacy.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Confidențialitate</a><a href="faq.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">FAQ</a></div></div>
 <div><p class="font-serif text-[10px] tracking-[.2em] uppercase text-warm-taupe/45 mb-3">Contact</p>
 <div class="space-y-2 font-serif text-[13px] text-warm-taupe/30"><p>+40 712 345 678</p><p>hello@nidohome.ro</p><p>București, România</p></div></div>
 </div>
@@ -183,15 +191,41 @@ tailwind.config={theme:{extend:{colors:{cream:'#F3F3EF','warm-taupe':'#D9D4C6','
 </div></footer>
 
 <script src="js/cart.js"></script>
+<script src="js/wishlist.js"></script>
 <script>
+/* MOBILE MENU */
 const mbtn=document.getElementById('mbtn'),mmenu=document.getElementById('mmenu');
-if(mbtn){mbtn.addEventListener('click',()=>{mmenu.classList.toggle('hidden');})}
+if(mbtn){mbtn.addEventListener('click',()=>{mmenu.classList.toggle('hidden')})}
+
+/* SCROLL REVEAL */
 const rv=document.querySelectorAll('.reveal');
 const ob=new IntersectionObserver(([...e])=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('active');ob.unobserve(x.target)}}),{threshold:.12,rootMargin:'0px 0px -30px 0px'});
 rv.forEach(el=>ob.observe(el));
 setTimeout(()=>rv.forEach(el=>{if(!el.classList.contains('active'))el.classList.add('active')}),2500);
+
+/* NAV SHADOW */
 const nv=document.getElementById('nav');
 window.addEventListener('scroll',()=>{nv.style.boxShadow=window.pageYOffset>10?'0 1px 12px rgba(67,34,27,.04)':'none'},{passive:true});
-</script>
-</body>
+
+/* SEARCH MODAL */
+const PRODUCTS=[
+  {id:'vas-sculpted',name:'Vas Sculpted',price:95,img:'https://image.pollinations.ai/prompt/sculpted%20cream%20ceramic%20vase%20product%20photo%20on%20clean%20cream%20background%2C%20interior%20photography%2C%20minimal%20design%2C%20Nido%20Home%20brand%2C%20cream%20taupe%20warm%20palette%2C%20professional%20product%20photography%2C%20soft%20natural%20lighting%2C%20editorial%20quality?width=100&height=100&nologo=true'},
+  {id:'cesti-ceramica',name:'Cești Ceramică',price:68,img:'https://image.pollinations.ai/prompt/two%20cream%20ceramic%20cups%20product%20photo%20on%20clean%20cream%20background%2C%20interior%20photography%2C%20minimal%20design%2C%20Nido%20Home%20brand%2C%20cream%20taupe%20warm%20palette%2C%20professional%20product%20photography%2C%20soft%20natural%20lighting%2C%20editorial%20quality?width=100&height=100&nologo=true'},
+  {id:'ghivci-geometric',name:'Ghivci Geometric',price:62,img:'https://image.pollinations.ai/prompt/geometric%20cream%20ceramic%20vase%20product%20photo%20on%20clean%20cream%20background%2C%20interior%20photography%2C%20minimal%20design%2C%20Nido%20Home%20brand%2C%20cream%20taupe%20warm%20palette%2C%20professional%20product%20photography%2C%20soft%20natural%20lighting%2C%20editorial%20quality?width=100&height=100&nologo=true'}
+];
+function openSearch(){const o=document.createElement('div');o.className='search-overlay';o.id='searchOverlay';o.innerHTML='<div class="search-box"><input class="search-input" id="searchInput" placeholder="Caută produse..." autocomplete="off"><div class="search-results" id="searchResults"></div></div>';document.body.appendChild(o,document.body);o.addEventListener('click',e=>{if(e.target===o)closeSearch()});document.getElementById('searchInput').focus();document.getElementById('searchInput').addEventListener('input',filterSearch)}
+function closeSearch(){const o=document.getElementById('searchOverlay');if(o)o.remove()}
+function filterSearch(e){const q=e.target.value.toLowerCase().trim(),r=document.getElementById('searchResults');if(!q){r.innerHTML=PRODUCTS.map(p=>searchItemHTML(p)).join('');return}const f=PRODUCTS.filter(p=>p.name.toLowerCase().includes(q));if(!f.length)r.innerHTML='<div class="search-empty">Niciun produs găsit</div>';else r.innerHTML=f.map(p=>searchItemHTML(p)).join('')}
+function searchItemHTML(p){return`<a href="${p.id}.html" class="search-result-item"><img src="${p.img}" alt="${p.name}"><div><p class="font-serif text-[15px] text-dark-wood">${p.name}</p><p class="font-serif text-[13px] text-dark-taupe/60">${p.price} RON</p></div></a>`}
+
+/* HEART ICON -> WISHLIST */
+const hearts=document.querySelectorAll('nav .relative + a svg, nav a[title]');
+document.addEventListener('click',e=>{const heartBtn=e.target.closest('.heart-btn');if(heartBtn){const id=heartBtn.dataset.id||'vas-sculpted';const name=heartBtn.dataset.name||'Vas Sculpted';const price=parseInt(heartBtn.dataset.price)||95;const img=heartBtn.dataset.img||'';toggleWishlist(id,name,price,img);heartBtn.classList.toggle('active')}});
+
+/* TOAST */
+function showToast(msg){let c=document.querySelector('.toast-container');if(!c){c=document.createElement('div');c.className='toast-container';document.body.appendChild(c)}const t=document.createElement('div');t.className='toast';t.textContent=msg;c.appendChild(t);setTimeout(()=>{t.classList.add('hide');setTimeout(()=>t.remove(),350)},3000)}
+
+/* NEWSLETTER */
+document.querySelectorAll('form').forEach(f=>{if(f.querySelector('input[type="email"]')){f.addEventListener('submit',e=>{e.preventDefault();const inp=f.querySelector('input[type="email"]');if(inp&&inp.value.includes('@')){showToast('Te-ai abonat cu succes!');inp.value=''}else if(inp){showToast('Introdu un email valid!')}})}});
+</script></body>
 </html>

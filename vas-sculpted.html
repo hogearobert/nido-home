@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Vas Sculpted — Nido Home</title>
+<meta name="description" content="Vas Sculpted — vas ceramic cu forme geometrice sculptate, creat manual din argilă naturală. 95 RON. Cumpără de la Nido Home.">
 <link rel="icon" type="image/svg+xml" href="brand_assets/logo-nido-home.svg">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
@@ -22,15 +23,23 @@ tailwind.config={theme:{extend:{colors:{cream:'#F3F3EF','warm-taupe':'#D9D4C6','
 </a>
 <div class="hidden md:flex items-center gap-[28px]">
 <a href="index.html" class="nav">Acasă</a>
-<a href="index.html#collection" class="nav">Colecții</a>
-<a href="index.html#story" class="nav">Povestea Noastră</a>
-<a href="cart.html" class="nav relative">
+<a href="collections.html" class="nav">Colecții</a>
+<a href="about.html" class="nav">Povestea noastră</a>
+<button onclick="openSearch()" class="nav bg-transparent border-0 p-0 cursor-pointer hover:text-dark-taupe transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="8" r="5"/><path d="M21 21l-4.35-4.35"/></svg></button>
+<a href="wishlist.html" class="nav no-underline relative hover:text-dark-taupe transition-colors" title="Wishlist">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+<span id="wishlist-badge" class="cart-badge" style="display:none;background:#737B7B"></span>
+</a>
+<a href="cart.html" class="nav relative no-underline hover:text-dark-taupe transition-colors">
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
   <span id="cart-badge" class="cart-badge"></span>
 </a>
 </div>
 </div>
 </nav>
+
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- BREADCRUMB -->
 <div class="max-w-[1400px] mx-auto px-8 lg:px-16 pt-[88px] pb-6">
@@ -132,21 +141,40 @@ tailwind.config={theme:{extend:{colors:{cream:'#F3F3EF','warm-taupe':'#D9D4C6','
 </footer>
 
 <script src="js/cart.js"></script>
+<script src="js/wishlist.js"></script>
 <script>
-let qty = 1;
-const thumbs = [
-  'https://image.pollinations.ai/prompt/sculpted%20cream%20ceramic%20vase%20with%20organic%20curved%20shape%20on%20linen%20tablecloth%2C%20tall%20minimalist%20form%2C%20Romanian%20ceramic%20art%2C%20interior%20photography%2C%20minimal%20design%2C%20Nido%20Home%20brand%2C%20cream%20taupe%20brass%20warm%20palette%2C%20professional%20product%20photography%2C%20soft%20natural%20diffused%20lighting%2C%20editorial%20quality%2C%2085mm%20lens?width=700&height=900&nologo=true',
-  'https://image.pollinations.ai/prompt/close-up%20detail%20of%20cream%20ceramic%20vase%20surface%20texture%2C%20matte%20finish%2C%20soft%20shadows%2C%20warm%20light%2C%20interior%20photography%2C%20minimal%20design%2C%20Nido%20Home%20brand%2C%20cream%20taupe%20brass%20warm%20palette%2C%20professional%20product%20photography%2C%20soft%20natural%20diffused%20lighting%2C%20editorial%20quality%2C%2085mm%20lens?width=700&height=900&nologo=true',
-  'https://image.pollinations.ai/prompt/top-down%20view%20of%20sculpted%20ceramic%20vase%20with%20geometric%20patterns%20on%20wooden%20surface%2C%20cream%20and%20taupe%20background%2C%20interior%20photography%2C%20minimal%20design%2C%20Nido%20Home%20brand%2C%20cream%20taupe%20brass%20warm%20palette%2C%20professional%20product%20photography%2C%20soft%20natural%20diffused%20lighting%2C%20editorial%20quality%2C%2085mm%20lens?width=700&height=900&nologo=true',
-  'https://image.pollinations.ai/prompt/cream%20ceramic%20vase%20in%20natural%20interior%20setting%2C%20soft%20morning%20light%2C%20linen%20curtains%20background%20blur%2C%20interior%20photography%2C%20minimal%20design%2C%20Nido%20Home%20brand%2C%20cream%20taupe%20brass%20warm%20palette%2C%20professional%20product%20photography%2C%20soft%20natural%20diffused%20lighting%2C%20editorial%20quality%2C%2085mm%20lens?width=700&height=900&nologo=true'
-];
+/* PRODUCT DATA */
+const PRODUCT_DATA={id:'vas-sculpted',name:'Vas Sculpted',price:95,img:'https://image.pollinations.ai/prompt/sculpted%20cream%20ceramic%20vase%20with%20organic%20curved%20shape%20on%20linen%20tablecloth%2C%20tall%20minimalist%20form%2C%20Romanian%20ceramic%20art%2C%20interior%20photography%2C%20minimal%20design%2C%20Nido%20Home%20brand%2C%20cream%20taupe%20brass%20warm%20palette%2C%20professional%20product%20photography%2C%20soft%20natural%20diffused%20lighting%2C%20editorial%20quality%2C%2085mm%20lens?width=400&height=400&nologo=true'};
+
+/* THUMBS */
+let qty=1;
+const thumbs=['https://image.pollinations.ai/prompt/sculpted%20cream%20ceramic%20vase%20with%20organic%20curved%20shape%20on%20linen%20tablecloth%2C%20tall%20minimalist%20form%2C%20Romanian%20ceramic%20art%2C%20interior%20photography%2C%20minimal%20design%2C%20Nido%20Home%20brand%2C%20cream%20taupe%20brass%20warm%20palette%2C%20professional%20product%20photography%2C%20soft%20natural%20diffused%20lighting%2C%20editorial%20quality%2C%2085mm%20lens?width=700&height=900&nologo=true','https://image.pollinations.ai/prompt/close-up%20detail%20of%20cream%20ceramic%20vase%20surface%20texture%2C%20matte%20finish%2C%20soft%20shadows%2C%20warm%20light%2C%20interior%20photography%2C%20minimal%20design%2C%20Nido%20Home%20brand%2C%20cream%20taupe%20brass%20warm%20palette%2C%20professional%20product%20photography%2C%20soft%20natural%20diffused%20lighting%2C%20editorial%20quality%2C%2085mm%20lens?width=700&height=900&nologo=true','https://image.pollinations.ai/prompt/top-down%20view%20of%20sculpted%20ceramic%20vase%20with%20geometric%20patterns%20on%20wooden%20surface%2C%20cream%20and%20taupe%20background%2C%20interior%20photography%2C%20minimal%20design%2C%20Nido%20Home%20brand%2C%20cream%20taupe%20brass%20warm%20palette%2C%20professional%20product%20photography%2C%20soft%20natural%20diffused%20lighting%2C%20editorial%20quality%2C%2085mm%20lens?width=700&height=900&nologo=true','https://image.pollinations.ai/prompt/cream%20ceramic%20vase%20in%20natural%20interior%20setting%2C%20soft%20morning%20light%2C%20linen%20curtains%20background%20blur%2C%20interior%20photography%2C%20minimal%20design%2C%20Nido%20Home%20brand%2C%20cream%20taupe%20brass%20warm%20palette%2C%20professional%20product%20photography%2C%20soft%20natural%20diffused%20lighting%2C%20editorial%20quality%2C%2085mm%20lens?width=700&height=900&nologo=true'];
 function thumb(i){document.getElementById('mainImage').src=thumbs[i]}
+
+/* QTY & ADD TO CART */
 function changeQty(d){qty=Math.max(1,Math.min(99,qty+d));document.getElementById('qtyVal').textContent=qty}
-function doAddCart(){addToCart('vas-sculpted','Vas Sculpted',95,qty);const b=document.getElementById('addBtn');b.textContent='Adăugat ✓';b.style.background='#43221B';setTimeout(()=>{b.textContent='Adaugă în Coș';b.style.background=''},1500)}
+function doAddCart(){addToCart(PRODUCT_DATA.id,PRODUCT_DATA.name,PRODUCT_DATA.price,qty);showToast('Adăugat în coș');const b=document.getElementById('addBtn');b.textContent='Adăugat ✓';b.style.background='#43221B';setTimeout(()=>{b.textContent='Adaugă în Coș';b.style.background=''},1500)}
+
+/* ACCORDION */
 function toggleAcc(el){el.classList.toggle('open');el.nextElementSibling.classList.toggle('open')}
+
+/* SCROLL REVEAL */
 const rv=document.querySelectorAll('.reveal');
 const ob=new IntersectionObserver(([...e])=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('active');ob.unobserve(x.target)}}),{threshold:.12});
 rv.forEach(el=>ob.observe(el));
+
+/* SCROLL PROGRESS */
+window.addEventListener('scroll',()=>{const el=document.getElementById('scrollProgress');if(el){const h=document.documentElement.scrollHeight-window.innerHeight;el.style.width=(window.scrollY/h*100)+'%'}});
+
+/* SEARCH MODAL */
+const PRODUCTS=[{id:'vas-sculpted',name:'Vas Sculpted',price:95,img:'https://image.pollinations.ai/prompt/sculpted%20cream%20ceramic%20vase%20product%20photo?width=100&height=100&nologo=true'},{id:'cesti-ceramica',name:'Cești Ceramică',price:68,img:'https://image.pollinations.ai/prompt/two%20cream%20ceramic%20cups%20product%20photo?width=100&height=100&nologo=true'},{id:'ghivci-geometric',name:'Ghivci Geometric',price:62,img:'https://image.pollinations.ai/prompt/geometric%20cream%20ceramic%20vase%20product%20photo?width=100&height=100&nologo=true'}];
+function openSearch(){const o=document.createElement('div');o.className='search-overlay';o.id='searchOverlay';o.onclick=e=>{if(e.target===o)closeSearch()};o.innerHTML='<div class="search-box"><input class="search-input" id="searchInput" placeholder="Caută produse..." autocomplete="off"><div class="search-results" id="searchResults"></div></div>';document.body.appendChild(o);document.getElementById('searchInput').focus();document.getElementById('searchInput').addEventListener('input',filterSearch)}
+function closeSearch(){const o=document.getElementById('searchOverlay');if(o)o.remove()}
+function filterSearch(e){const q=e.target.value.toLowerCase().trim(),r=document.getElementById('searchResults');if(!q){r.innerHTML=PRODUCTS.map(p=>searchItemHTML(p)).join('');return}const f=PRODUCTS.filter(p=>p.name.toLowerCase().includes(q));if(!f.length)r.innerHTML='<div class="search-empty">Niciun produs găsit</div>';else r.innerHTML=f.map(p=>searchItemHTML(p)).join('')}
+function searchItemHTML(p){return`<a href="${p.id}.html" class="search-result-item"><img src="${p.img}" alt="${p.name}"><div><p class="font-serif text-[15px] text-dark-wood">${p.name}</p><p class="font-serif text-[13px] text-dark-taupe/60">${p.price} RON</p></div></a>`}
+
+/* TOAST */
+function showToast(msg){let c=document.querySelector('.toast-container');if(!c){c=document.createElement('div');c.className='toast-container';document.body.appendChild(c)}const t=document.createElement('div');t.className='toast';t.textContent=msg;c.appendChild(t);setTimeout(()=>{t.classList.add('hide');setTimeout(()=>t.remove(),350)},3000)}
 </script>
 </body>
 </html>

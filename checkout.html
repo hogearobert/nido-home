@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Finalizare Comandă — Nido Home</title>
+<meta name="description" content="Finalizează-ți comanda Nido Home — livrare rapidă și sigură pentru produsele tale de ceramică artizanală.">
+<link rel="icon" type="image/svg+xml" href="brand_assets/logo-nido-home.svg">
+<link rel="apple-touch-icon" href="https://placehold.co/180x180"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{cream:'#F3F3EF','warm-taupe':'#D9D4C6','warm-taupe-dk':'#C5BFA8','dark-taupe':'#6C6158','brass':'#C3A848','grey-blue':'#737B7B','dark-wood':'#43221B'},fontFamily:{sans:['system-ui','sans-serif'],serif:['"EB Garamond"','Georgia','serif'],display:['"Playfair Display"','Georgia','serif']}}}}
+</script>
+<link rel="stylesheet" href="css/product-shared.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-cream/95 backdrop-blur" style="border-bottom:1px solid #D9D4C633">
+<div class="max-w-[1440px] mx-auto px-8 lg:px-16 flex items-center h-[68px]">
+  <a href="index.html" class="shrink-0 no-underline">
+    <img src="brand_assets/logo-nido-home.svg" alt="NIDO HOME" style="height:48px;width:auto">
+  </a>
+  <div class="ml-auto flex items-center gap-4 text-dark-wood">
+    <a href="cart.html" class="relative no-underline">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+      <span id="cart-badge" class="cart-badge"></span>
+    </a>
+  </div>
+</div>
+</nav>
+
+<!-- EMPTY CART STATE -->
+<section id="empty-cart-state" class="hidden max-w-[540px] mx-auto px-8 lg:px-16 pt-[88px] pb-24 min-h-[60vh] text-center">
+  <p class="font-serif text-[20px] text-dark-taupe/50 mb-6">Coșul tău este gol</p>
+  <a href="index.html#collection" class="btn">Înapoi la Colecție</a>
+</section>
+
+<!-- CHECKOUT FLOW -->
+<section id="checkout-flow" class="max-w-[640px] mx-auto px-8 lg:px-16 pt-[88px] pb-24 min-h-[80vh]">
+  <h1 class="font-display text-[36px] md:text-[48px] text-dark-wood leading-[1.05] mb-10">Finalizare Comandă</h1>
+
+  <!-- State 1: Delivery Details -->
+  <div id="state-delivery">
+    <form id="delivery-form" class="space-y-6">
+      <div>
+        <label class="form-label" for="fullname">Nume Complet</label>
+        <input class="form-input" type="text" id="fullname" required placeholder="Ion Popescu">
+      </div>
+      <div>
+        <label class="form-label" for="address">Adresa</label>
+        <input class="form-input" type="text" id="address" required placeholder="Strada Exemplu, Nr. 10, Bl. A2, Ap. 5">
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div>
+          <label class="form-label" for="city">Oraș</label>
+          <input class="form-input" type="text" id="city" required placeholder="București">
+        </div>
+        <div>
+          <label class="form-label" for="county">Județ</label>
+          <input class="form-input" type="text" id="county" required placeholder="Ilfov">
+        </div>
+        <div>
+          <label class="form-label" for="zipcode">Cod Poștal</label>
+          <input class="form-input" type="text" id="zipcode" required placeholder="012345">
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div>
+          <label class="form-label" for="phone">Telefon</label>
+          <input class="form-input" type="tel" id="phone" required placeholder="+40 721 234 567">
+        </div>
+        <div>
+          <label class="form-label" for="email">Email</label>
+          <input class="form-input" type="email" id="email" required placeholder="ion@email.com">
+        </div>
+      </div>
+      <div>
+        <label class="form-label" for="shipping">Metodă de Livrare</label>
+        <select class="form-input" id="shipping" required>
+          <option value="courier">Curier — 15 RON</option>
+          <option value="pickup">Ridicare din Atelier — Gratuit</option>
+        </select>
+      </div>
+      <div>
+        <label class="form-label" for="notes">Notă pentru comandă (opțional)</label>
+        <textarea class="form-input resize-none" id="notes" rows="3" placeholder="Adaugă detalii suplimentare despre livrare sau produs..."></textarea>
+      </div>
+      <button type="submit" class="btn w-full text-center">Continuă către Recapitulare</button>
+    </form>
+  </div>
+
+  <!-- State 2: Order Recap -->
+  <div id="state-recap" class="hidden">
+    <h2 class="font-serif text-[28px] text-dark-wood mb-8">Recapitulare Comandă</h2>
+
+    <!-- Order Items -->
+    <div id="recap-items" class="space-y-4 mb-8"></div>
+
+    <!-- Cost Summary -->
+    <div class="border-t border-warm-taupe/40 pt-5 space-y-3 mb-8">
+      <div class="flex justify-between">
+        <span class="font-serif text-[15px] text-dark-taupe">Subtotal</span>
+        <span id="recap-subtotal" class="font-serif text-[15px] text-dark-wood"></span>
+      </div>
+      <div class="flex justify-between">
+        <span class="font-serif text-[15px] text-dark-taupe">Livrare</span>
+        <span id="recap-shipping" class="font-serif text-[15px] text-dark-wood"></span>
+      </div>
+      <div class="flex justify-between border-t border-warm-taupe/40 pt-3">
+        <span class="font-serif text-[18px] font-semibold text-dark-wood">Total</span>
+        <span id="recap-total" class="font-serif text-[22px] font-semibold text-dark-wood"></span>
+      </div>
+    </div>
+
+    <!-- Delivery Address Recap -->
+    <div class="bg-warm-taupe/20 p-6 border border-warm-taupe/40 mb-8">
+      <h3 class="font-serif text-[16px] font-semibold text-dark-wood mb-3">Adresa de Livrare</h3>
+      <div id="recap-address" class="font-serif text-[14px] text-dark-taupe leading-[1.7]"></div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-4">
+      <button onclick="goBackToDelivery()" class="btn btn-outline flex-1 text-center">Înapoi</button>
+      <button onclick="confirmOrder()" class="btn flex-1 text-center">Confirmă Comanda</button>
+    </div>
+  </div>
+
+  <!-- State 3: Confirmation -->
+  <div id="state-confirmation" class="hidden text-center py-12">
+    <div class="mb-8">
+      <svg class="mx-auto mb-4" width="64" height="64" viewBox="0 0 64 64" fill="none">
+        <circle cx="32" cy="32" r="30" stroke="#C3A848" stroke-width="2"/>
+        <path d="M20 32 L28 40 L44 24" stroke="#C3A848" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h2 class="font-display text-[32px] md:text-[40px] text-dark-wood mb-4">Mulțumim!</h2>
+      <p class="font-serif text-[18px] text-dark-taupe">Comanda ta a fost trimisă cu succes.</p>
+    </div>
+    <p class="font-serif text-[15px] text-grey-blue mb-2">Număr comandă:</p>
+    <p id="order-number" class="font-serif text-[24px] text-dark-wood font-semibold tracking-[.1em] mb-8"></p>
+    <p class="font-serif text-[14px] text-dark-taupe/70 leading-[1.7] max-w-md mx-auto mb-10">
+      Vei primi o confirmare pe email cu detaliile comenzii și informații despre livrare.
+    </p>
+    <a href="index.html" class="btn">Înapoi Acasă</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-14 px-8 lg:px-16" style="background:#43221B">
+<div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-3">
+  <p class="font-serif text-[11px] text-warm-taupe/20 tracking-[.1em]">&copy; 2026 Nido Home</p>
+  <div class="flex gap-6">
+    <a href="index.html" class="footer-link">Acasă</a>
+    <a href="index.html#collection" class="footer-link">Colecții</a>
+    <a href="cart.html" class="footer-link">Coș</a>
+  </div>
+</div>
+</footer>
+
+<script src="js/cart.js"></script>
+<script>
+const form = document.getElementById('delivery-form');
+const emptyState = document.getElementById('empty-cart-state');
+const checkoutFlow = document.getElementById('checkout-flow');
+const stateDelivery = document.getElementById('state-delivery');
+const stateRecap = document.getElementById('state-recap');
+const stateConfirmation = document.getElementById('state-confirmation');
+
+// Check cart on load
+const items = getCart();
+if (!items.length) {
+  emptyState.classList.remove('hidden');
+  checkoutFlow.classList.add('hidden');
+} else {
+  emptyState.classList.add('hidden');
+}
+
+// Step 1 -> 2: validate form, show recap
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  showRecap();
+});
+
+function showRecap() {
+  const subtot = items.reduce((s, i) => s + (i.price || 0) * i.qty, 0);
+  const shipMethod = document.getElementById('shipping').value;
+  const shipCost = shipMethod === 'courier' ? 15 : 0;
+  const total = subtot + shipCost;
+
+  // Build order items
+  const container = document.getElementById('recap-items');
+  container.innerHTML = items.map(i => `
+    <div class="flex items-center justify-between py-4 border-b border-warm-taupe/40">
+      <div>
+        <p class="font-serif text-[16px] text-dark-wood">${i.name}</p>
+        <p class="font-serif text-[13px] text-dark-taupe/50">Cantitate: ${i.qty}</p>
+      </div>
+      <p class="font-serif text-[16px] text-dark-wood">${(i.price || 0) * i.qty} RON</p>
+    </div>
+  `).join('');
+
+  // Cost summary
+  document.getElementById('recap-subtotal').textContent = subtot + ' RON';
+  document.getElementById('recap-shipping').textContent = shipCost === 0 ? 'Gratuită' : shipCost + ' RON';
+  document.getElementById('recap-total').textContent = total + ' RON';
+
+  // Address recap
+  const addr = `${document.getElementById('fullname').value}<br>${document.getElementById('address').value}<br>${document.getElementById('city').value}, ${document.getElementById('county').value} ${document.getElementById('zipcode').value}<br>Tel: ${document.getElementById('phone').value}<br>${document.getElementById('email').value}`;
+  document.getElementById('recap-address').innerHTML = addr;
+
+  // Switch state
+  stateDelivery.classList.add('hidden');
+  stateRecap.classList.remove('hidden');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goBackToDelivery() {
+  stateRecap.classList.add('hidden');
+  stateDelivery.classList.remove('hidden');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function confirmOrder() {
+  // Generate order number
+  const num = Math.floor(1000 + Math.random() * 9000);
+  document.getElementById('order-number').textContent = `NH-2026-${num}`;
+
+  // Clear cart
+  saveCart([]);
+  updateBadge();
+
+  // Show confirmation
+  stateRecap.classList.add('hidden');
+  stateConfirmation.classList.remove('hidden');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

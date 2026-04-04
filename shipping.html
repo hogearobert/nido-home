@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Livrare si Returnari — Nido Home</title>
+<link rel="icon" type="image/svg+xml" href="brand_assets/logo-nido-home.svg">
+<link rel="apple-touch-icon" href="https://placehold.co/180x180"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{cream:'#F3F3EF','warm-taupe':'#D9D4C6','warm-taupe-dk':'#C5BFA8','dark-taupe':'#6C6158','brass':'#C3A848','grey-blue':'#737B7B','dark-wood':'#43221B'},fontFamily:{sans:['system-ui','sans-serif'],serif:['"EB Garamond"','Georgia','serif'],display:['"Playfair Display"','Georgia','serif']}}}}
+</script>
+<link rel="stylesheet" href="css/product-shared.css">
+<style>
+.page-hero{min-height:36vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#EBE8E1 0%,#F3F3EF 100%)}
+.ship-body h3{font-family:'EB Garamond',serif;font-size:18px;font-weight:600;color:#43221B;margin-top:28px;margin-bottom:8px}
+.ship-body p{font-size:15px;color:#6C6158;line-height:1.8;margin-bottom:12px}
+.ship-body ul{list-style:disc;padding-left:24px;margin-bottom:12px}
+.ship-body li{font-size:15px;color:#6C6158;line-height:1.8;margin-bottom:4px}
+.info-card{background:#EBE8E1;border-radius:8px;padding:28px;margin-bottom:24px}
+.info-card h3{margin-top:0}
+.highlight-card{background:#F3F3EF;border:1px solid #D9D4C6;border-radius:8px;padding:28px;text-align:center}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-cream/95 backdrop-blur" id="nav" style="border-bottom:1px solid #D9D4C633">
+<div class="max-w-[1440px] mx-auto px-8 lg:px-16 flex items-center justify-between h-[68px]">
+<a href="index.html" class="no-underline shrink-0">
+<img src="brand_assets/logo-nido-home.svg" alt="NIDO HOME" style="height:48px;width:auto">
+</a>
+<div class="hidden md:flex items-center gap-[28px]">
+<a href="index.html" class="nav">Acasa</a><a href="index.html#collection" class="nav">Colectii</a><a href="index.html#story" class="nav">Povestea Noastra</a><a href="index.html#services" class="nav">Servicii</a><a href="index.html#journal" class="nav">Jurnal</a><a href="index.html#contact" class="nav">Contact</a></div>
+<div class="flex items-center gap-4 text-dark-wood">
+<a href="cart.html" class="relative no-underline"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+<span id="cart-badge" class="cart-badge"></span></a></div>
+<button class="md:hidden text-dark-wood bg-transparent border-0 p-0" id="mbtn">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button></div>
+<div class="md:hidden hidden bg-cream border-t" id="mmenu">
+<div class="flex flex-col gap-4 p-6">
+<a href="index.html" class="nav">Acasa</a><a href="index.html#collection" class="nav">Colectii</a><a href="index.html#story" class="nav">Povestea Noastra</a><a href="index.html#services" class="nav">Servicii</a><a href="index.html#journal" class="nav">Jurnal</a><a href="index.html#contact" class="nav">Contact</a></div></div></nav>
+
+<!-- HERO -->
+<div class="page-hero" style="margin-top:68px">
+<div class="text-center px-6">
+<p class="font-serif text-[12px] tracking-[.4em] uppercase text-dark-taupe/50 mb-3">Livrare si Retur</p>
+<h1 class="font-display text-[40px] md:text-[52px] text-dark-wood leading-[1.1]">Livrare si Returnari</h1>
+<div class="sep bg-warm-taupe mt-5 mx-auto"></div>
+</div>
+</div>
+
+<!-- CONTENT -->
+<section class="py-16 md:py-24 px-8 lg:px-16">
+<div class="max-w-[820px] mx-auto ship-body">
+
+<div class="highlight-card mb-12">
+<div class="font-serif text-[24px] text-dark-wood mb-2">Transport Gratuit</div>
+<p class="text-lg text-dark-taupe/60 mb-0">La comenzi de peste 200 RON. Comenzile sub aceasta valoare au taxa de livrare de 15 RON prin curier rapid.</p>
+</div>
+
+<div class="info-card">
+<h3>Cum livram?</h3>
+<p>Toate comenzile sunt expediate prin curierati parteneri de incredere, care livreaza pe intreg teritoriul Romaniei. Fiecare produs este ambalat cu grija in materiale de protectie reciclabile, pentru a ajunge la dumneavoastra in conditii impecabile.</p>
+<p>Dupa confirmarea comenzii, veti primi un e-mail cu numarul de awb si un link de tracking, astfel incat sa puteti urmari fiecare etapa a livrarii.</p>
+</div>
+
+<div class="info-card">
+<h3>Cat dureaza livrarea?</h3>
+<p>Termenul standard de livrare este de <strong>2-5 zile lucratoare</strong> de la confirmarea comenzii. In perioadele aglomerate (sarbatori, reduceri sezoniere), termenul poate fi prelungit cu 1-2 zile, situatie pe care o vom comunica prin e-mail.</p>
+<p>Pentru localitatile aflate in zone rurale sau izolate, termenul poate fi de pana la 7 zile lucratoare. Pentru livrari urgente, va rugam sa ne contactati telefonic pentru a gasi o solutie optima.</p>
+</div>
+
+<div class="info-card">
+<h3>Costuri de livrare</h3>
+<ul>
+<li><strong>Comenzi de peste 200 RON:</strong> LIVRARE GRATUITA</li>
+<li><strong>Comenzi sub 200 RON:</strong> 15 RON (tarif fix, indiferent de destinatie)</li>
+</ul>
+<p>Taxa de livrare este vizibila inainte de finalizarea comenzii, in pagina de checkout.</p>
+</div>
+
+<div class="info-card">
+<h3>Politica de Returnare</h3>
+<p>Achizitionand produse online prin Nido Home, beneficiati de dreptul legal de retragere in termen de <strong>14 zile calendaristice</strong> de la primirea coletului, fara a fi necesara justificarea motivului de retur. Daca nu sunteti multumit de un produs, il puteti returna cu urmatoarele conditii:</p>
+</div>
+
+<div class="info-card">
+<h3>Conditii de returnare</h3>
+<ul>
+<li>Produsul trebuie sa fie in starea originala, nedeteriorat si neutilizat</li>
+<li>Ambalajul original trebuie sa fie intact, cu toate accesoriile incluse</li>
+<li>Nu se accepta produse personalizate sau create la comanda, cu exceptia defectelor de fabricatie</li>
+<li>Produsele din ceramica pot prezenta usoare variatii de nuanta sau textura — acestea NU constituie defecte, ci particularitati specifice lucrarilor manuale</li>
+</ul>
+</div>
+
+<div class="info-card">
+<h3>Procesul de returnare</h3>
+<p>Urmati pasii de mai jos pentru a returna un produs:</p>
+<ul>
+<li><strong>Pasul 1:</strong> Anuntati-ne intentia de returnare prin e-mail la hello@nidohome.ro, specificand numarul comenzii si motivele (optional).</li>
+<li><strong>Pasul 2:</strong> Veti primi un formular de retur si instructiunile de expediere. Ambalati produsul in ambalajul original.</li>
+<li><strong>Pasul 3:</strong> Exprediti coletul prin orice curier la adresa indicata. Costul transportului de retur este suportat de client.</li>
+<li><strong>Pasul 4:</strong> Dupa receptia si verificarea produsului, veti primi rambursarea in termen de 14 zile lucratoare pe aceeasi metoda de plata utilizata la comanda.</li>
+</ul>
+</div>
+
+<div class="text-center mt-12">
+<p class="font-serif text-[16px] text-dark-wood mb-4">Intrebari despre livrare sau retur?</p>
+<a href="index.html#contact" class="btn inline-block" style="font-size:12px;padding:12px 32px;letter-spacing:1.5px">Contacteaza-ne</a>
+</div>
+
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-16 md:py-20 px-8 lg:px-16" style="background:#43221B">
+<div class="max-w-[1400px] mx-auto">
+<div class="grid md:grid-cols-4 gap-12 mb-14">
+<div class="md:col-span-1">
+<img src="brand_assets/logo-nido-home.svg" alt="NIDO HOME" style="height:46px;width:auto;filter:brightness(0) saturate(100%) invert(88%) sepia(10%) saturate(300%) hue-rotate(10deg) brightness(92%) contrast(88%);opacity:.5;margin-bottom:16px">
+<div class="flex gap-3 text-warm-taupe/35">
+<a href="#" class="hover:text-warm-taupe/80 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+<a href="#" class="hover:text-warm-taupe/80 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+</div></div>
+<div><p class="font-serif text-[10px] tracking-[.2em] uppercase text-warm-taupe/45 mb-3">Linkuri</p>
+<div class="space-y-2"><a href="index.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Acasa</a><a href="index.html#collection" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Colectii</a><a href="index.html#story" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Povestea Noastra</a></div></div>
+<div><p class="font-serif text-[10px] tracking-[.2em] uppercase text-warm-taupe/45 mb-3">Legal</p>
+<div class="space-y-2"><a href="terms.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Termeni si Conditii</a><a href="shipping.html" class="block font-serif text-[13px] text-warm-taupe/60 hover:text-warm-taupe/80 transition-colors no-underline">Livrare si Returnari</a><a href="privacy.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Confidentialitate</a><a href="faq.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">FAQ</a></div></div>
+<div><p class="font-serif text-[10px] tracking-[.2em] uppercase text-warm-taupe/45 mb-3">Contact</p>
+<div class="space-y-2 font-serif text-[13px] text-warm-taupe/30"><p>+40 712 345 678</p><p>hello@nidohome.ro</p><p>Bucuresti, Romania</p></div></div>
+</div>
+<div class="border-t border-warm-taupe/10 pt-7 flex flex-col md:flex-row justify-between items-center gap-2">
+<p class="font-serif text-[11px] text-warm-taupe/20 tracking-[.1em]">&copy; 2026 Nido Home. Toate drepturile rezervate.</p>
+<p class="font-serif text-[11px] text-warm-taupe/10 tracking-[.1em]">Design de Nido Home Creative Studio</p></div>
+</div></footer>
+
+<script src="js/cart.js"></script>
+<script src="js/wishlist.js"></script>
+<script>
+const mbtn=document.getElementById('mbtn'),mmenu=document.getElementById('mmenu');
+if(mbtn){mbtn.addEventListener('click',()=>{mmenu.classList.toggle('hidden');})}
+</script>
+</body>
+</html>

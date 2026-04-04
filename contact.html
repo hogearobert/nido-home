@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact - Nido Home</title>
+<meta name="description" content="Contactează Nido Home — suntem aici pentru întrebări despre produsele noastre de design interior și ceramică artizanală.">
+<link rel="icon" type="image/svg+xml" href="brand_assets/logo-nido-home.svg">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{cream:'#F3F3EF','warm-taupe':'#D9D4C6','warm-taupe-dk':'#C5BFA8','dark-taupe':'#6C6158','brass':'#C3A848','grey-blue':'#737B7B','dark-wood':'#43221B'},fontFamily:{sans:['system-ui','sans-serif'],serif:['"EB Garamond"','Georgia','serif'],display:['"Playfair Display"','Georgia','serif']}}}}
+</script>
+<link rel="stylesheet" href="css/product-shared.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-cream/95 backdrop-blur" style="border-bottom:1px solid #D9D4C633">
+<div class="max-w-[1440px] mx-auto px-8 lg:px-16 flex items-center justify-between h-[68px]">
+<a href="index.html" class="shrink-0 no-underline">
+<img src="brand_assets/logo-nido-home.svg" alt="NIDO HOME" style="height:48px;width:auto">
+</a>
+<div class="hidden md:flex items-center gap-[28px]">
+<a href="index.html" class="nav">Acasă</a>
+<a href="index.html#collection" class="nav">Colecții</a>
+<a href="index.html#story" class="nav">Povestea Noastră</a>
+<a href="index.html#services" class="nav">Servicii</a>
+<a href="index.html#journal" class="nav">Jurnal</a>
+<a href="contact.html" class="nav" style="color:#6C6158">Contact</a>
+</div>
+<div class="flex items-center gap-4 text-dark-wood">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="8" r="5"/><path d="M21 21l-4.35-4.35"/></svg>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+<a href="cart.html" class="relative no-underline"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+<span id="cart-badge" class="cart-badge"></span></a>
+</div>
+<button class="md:hidden text-dark-wood bg-transparent border-0 p-0" id="mbtn">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+</button>
+</div>
+<div class="md:hidden hidden bg-cream border-t" id="mmenu">
+<div class="flex flex-col gap-4 p-6">
+<a href="index.html" class="nav">Acasă</a>
+<a href="index.html#collection" class="nav">Colecții</a>
+<a href="index.html#story" class="nav">Povestea Noastră</a>
+<a href="index.html#services" class="nav">Servicii</a>
+<a href="index.html#journal" class="nav">Jurnal</a>
+<a href="contact.html" class="nav" style="color:#6C6158">Contact</a>
+</div>
+</div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="max-w-[1400px] mx-auto px-8 lg:px-16 pt-[88px] pb-6">
+<p class="font-serif text-[12px] text-dark-taupe/40 tracking-[.15em]">
+<a href="index.html" class="text-dark-taupe/40 hover:text-dark-wood transition-colors no-underline">Acasă</a> /
+<span class="text-dark-wood/60">Contact</span>
+</p>
+</div>
+
+<!-- CONTACT SECTION -->
+<section class="max-w-[1400px] mx-auto px-8 lg:px-16 py-16 md:py-24">
+<div class="text-center mb-16 reveal">
+<p class="font-serif text-[13px] tracking-[.35em] uppercase text-dark-taupe/60 mb-3">Ai Intrebari?</p>
+<h1 class="font-display text-[36px] md:text-[52px] text-dark-wood leading-[1.05] mb-4">Contactează-ne</h1>
+<div class="sep bg-warm-taupe"></div>
+</div>
+
+<div class="grid md:grid-cols-2 gap-12 lg:gap-20">
+<!-- LEFT: Contact Form -->
+<div class="reveal">
+<form id="contactForm" class="space-y-6" novalidate>
+<div>
+<label class="form-label" for="nume">Nume Complet *</label>
+<input class="form-input" type="text" id="nume" name="nume" placeholder="Prenumele și numele tău" required>
+<p class="text-red-700 text-[12px] mt-1 hidden" id="numeErr">Introdu numele tău.</p>
+</div>
+<div>
+<label class="form-label" for="email">Email *</label>
+<input class="form-input" type="email" id="email" name="email" placeholder="exemplu@email.com" required>
+<p class="text-red-700 text-[12px] mt-1 hidden" id="emailErr">Introdu o adresă de email validă.</p>
+</div>
+<div>
+<label class="form-label" for="subiect">Subiect *</label>
+<select class="form-input" id="subiect" name="subiect" required>
+<option value="">Alege un subiect...</option>
+<option value="intrebare-generală">Întrebare Generală</option>
+<option value="informatii-comanda">Informații Comandă</option>
+<option value="colaborare">Colaborare</option>
+<option value="altele">Altele</option>
+</select>
+<p class="text-red-700 text-[12px] mt-1 hidden" id="subiectErr">Alege un subiect.</p>
+</div>
+<div>
+<label class="form-label" for="mesaj">Mesaj *</label>
+<textarea class="form-input resize-none" id="mesaj" name="mesaj" rows="6" placeholder="Scrie mesajul tău aici..." required></textarea>
+<p class="text-red-700 text-[12px] mt-1 hidden" id="mesajErr">Mesajul nu poate fi gol.</p>
+</div>
+<button type="submit" class="btn w-full md:w-auto text-center" id="submitBtn">Trimite Mesajul</button>
+</form>
+</div>
+
+<!-- RIGHT: Contact Info -->
+<div class="reveal flex flex-col justify-center">
+<p class="font-display text-[24px] text-dark-wood mb-8">Informații de Contact</p>
+<p class="font-serif text-[15px] text-dark-taupe/55 leading-[1.8] mb-10">Suntem aici pentru tine. Ne poți contacta prin oricare din metodele de mai jos sau completează formularul și îți răspundem în cel mai scurt timp.</p>
+
+<div class="space-y-7">
+<!-- Phone -->
+<div class="flex items-start gap-5">
+<div class="w-10 h-10 shrink-0 flex items-center justify-center rounded-full" style="background:#D9D4C633">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6C6158" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+</div>
+<div>
+<p class="font-serif text-[11px] tracking-[.2em] uppercase text-dark-taupe/40 mb-1">Telefon</p>
+<a href="tel:+40712345678" class="font-serif text-[17px] text-dark-wood no-underline hover:text-dark-taupe transition-colors">+40 712 345 678</a>
+</div>
+</div>
+
+<!-- Email -->
+<div class="flex items-start gap-5">
+<div class="w-10 h-10 shrink-0 flex items-center justify-center rounded-full" style="background:#D9D4C633">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6C6158" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+</div>
+<div>
+<p class="font-serif text-[11px] tracking-[.2em] uppercase text-dark-taupe/40 mb-1">Email</p>
+<a href="mailto:hello@nidohome.ro" class="font-serif text-[17px] text-dark-wood no-underline hover:text-dark-taupe transition-colors">hello@nidohome.ro</a>
+</div>
+</div>
+
+<!-- Address -->
+<div class="flex items-start gap-5">
+<div class="w-10 h-10 shrink-0 flex items-center justify-center rounded-full" style="background:#D9D4C633">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6C6158" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+</div>
+<div>
+<p class="font-serif text-[11px] tracking-[.2em] uppercase text-dark-taupe/40 mb-1">Adresă</p>
+<p class="font-serif text-[17px] text-dark-wood">Strada Atelierului 12, București</p>
+</div>
+</div>
+
+<!-- Program -->
+<div class="flex items-start gap-5">
+<div class="w-10 h-10 shrink-0 flex items-center justify-center rounded-full" style="background:#D9D4C633">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6C6158" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+</div>
+<div>
+<p class="font-serif text-[11px] tracking-[.2em] uppercase text-dark-taupe/40 mb-1">Program</p>
+<p class="font-serif text-[17px] text-dark-wood">Luni-Vineri, 09:00 - 18:00</p>
+</div>
+</div>
+</div>
+
+<!-- Social Media -->
+<div class="mt-12">
+<p class="font-serif text-[11px] tracking-[.2em] uppercase text-dark-taupe/40 mb-4">Urmărește-ne</p>
+<div class="flex gap-4">
+<!-- Instagram -->
+<a href="#" class="w-11 h-11 flex items-center justify-center border border-warm-taupe/40 rounded-full text-dark-wood hover:text-brass hover:border-brass transition-colors" aria-label="Instagram">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+</a>
+<!-- Facebook -->
+<a href="#" class="w-11 h-11 flex items-center justify-center border border-warm-taupe/40 rounded-full text-dark-wood hover:text-brass hover:border-brass transition-colors" aria-label="Facebook">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+</a>
+<!-- Pinterest -->
+<a href="#" class="w-11 h-11 flex items-center justify-center border border-warm-taupe/40 rounded-full text-dark-wood hover:text-brass hover:border-brass transition-colors" aria-label="Pinterest">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 7c-3 0-5 2.5-5 5 0 1.5.7 2.6 1.8 3.2l.3-2.2c.2-.8.5-1.5.5-2.2"/></svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FULL-WIDTH IMAGE -->
+<section class="w-full overflow-hidden reveal" style="height:420px;min-height:320px">
+<img src="https://image.pollinations.ai/prompt/interior%20design%20workshop%20with%20cream%20ceramic%20pieces%20on%20wooden%20worktables%2C%20natural%20light%20streams%20through%20large%20windows%2C%20Romanian%20craft%20tradition%2C%20warm%20workshop%20atmosphere%2C%20clay%20tools%2C%20artisan%20workspace%2C%20interior%20photography%2C%20minimal%20design%2C%20Nido%20Home%20brand%2C%20cream%20taupe%20warm%20palette%2C%20professional%20photography%2C%20soft%20natural%20diffused%20lighting%2C%20editorial%20quality%2C%2085mm%20lens?width=1920&height=600&nologo=true" alt="Atelier Nido Home" class="w-full h-full object-cover">
+</section>
+
+<!-- TOAST CONTAINER -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- FOOTER -->
+<footer class="py-16 md:py-20 px-8 lg:px-16" style="background:#43221B">
+<div class="max-w-[1400px] mx-auto">
+<div class="grid md:grid-cols-4 gap-12 mb-14">
+<div class="md:col-span-1">
+<img src="brand_assets/logo-nido-home.svg" alt="NIDO HOME" style="height:46px;width:auto;filter:brightness(0) saturate(100%) invert(88%) sepia(10%) saturate(300%) hue-rotate(10deg) brightness(92%) contrast(88%);opacity:.5;margin-bottom:16px">
+<div class="flex gap-3 text-warm-taupe/35">
+<a href="#" class="hover:text-warm-taupe/80 transition-colors" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+<a href="#" class="hover:text-warm-taupe/80 transition-colors" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+<a href="#" class="hover:text-warm-taupe/80 transition-colors" aria-label="Pinterest"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 7c-3 0-5 2.5-5 5 0 1.5.7 2.6 1.8 3.2l.3-2.2c.2-.8.5-1.5.5-2.2"/></svg></a>
+</div>
+</div>
+<div>
+<p class="font-serif text-[10px] tracking-[.2em] uppercase text-warm-taupe/45 mb-3">Linkuri</p>
+<div class="space-y-2">
+<a href="index.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Acasă</a>
+<a href="index.html#collection" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Colecții</a>
+<a href="index.html#story" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Povestea Noastră</a>
+<a href="index.html#services" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Servicii</a>
+<a href="index.html#journal" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Jurnal</a>
+<a href="contact.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Contact</a>
+</div>
+</div>
+<div>
+<p class="font-serif text-[10px] tracking-[.2em] uppercase text-warm-taupe/45 mb-3">Legal</p>
+<div class="space-y-2">
+<a href="terms.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Termeni și Condiții</a>
+<a href="shipping.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Livrare</a>
+<a href="privacy.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Politica de Confidențialitate</a>
+<a href="shipping.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Returnări</a>
+</div>
+</div>
+<div>
+<p class="font-serif text-[10px] tracking-[.2em] uppercase text-warm-taupe/45 mb-3">Produse</p>
+<div class="space-y-2">
+<a href="vas-sculpted.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Vas Sculpted</a>
+<a href="cesti-ceramica.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Cești Ceramică</a>
+<a href="ghivci-geometric.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Ghivci Geometric</a>
+</div>
+</div>
+</div>
+<div class="border-t border-warm-taupe/10 pt-7 flex flex-col md:flex-row justify-between items-center gap-2">
+<p class="font-serif text-[11px] text-warm-taupe/20 tracking-[.1em]">© 2026 Nido Home. Toate drepturile rezervate.</p>
+<p class="font-serif text-[11px] text-warm-taupe/10 tracking-[.1em]">Design de Nido Home Creative Studio</p>
+</div>
+</div>
+</footer>
+
+<script src="js/cart.js"></script>
+<script src="js/wishlist.js"></script>
+<script>
+// Mobile menu
+const mbtn=document.getElementById('mbtn'),mmenu=document.getElementById('mmenu');
+if(mbtn){mbtn.addEventListener('click',()=>{mmenu.classList.toggle('hidden');})}
+
+// Scroll reveal
+const rv=document.querySelectorAll('.reveal');
+const ob=new IntersectionObserver(([...e])=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('active');ob.unobserve(x.target)}}),{threshold:.12,rootMargin:'0px 0px -30px 0px'});
+rv.forEach(el=>ob.observe(el));
+setTimeout(()=>rv.forEach(el=>{if(!el.classList.contains('active'))el.classList.add('active')}),2500);
+
+// Nav shadow
+const nv=document.getElementById('nav');
+window.addEventListener('scroll',()=>{const n=document.querySelector('nav');if(n){n.style.boxShadow=window.pageYOffset>10?'0 1px 12px rgba(67,34,27,.04)':'none'}},{passive:true});
+
+// Form validation + toast
+function showToast(msg){
+  const c=document.getElementById('toastContainer');
+  const t=document.createElement('div');
+  t.className='toast';
+  t.textContent=msg;
+  c.appendChild(t);
+  setTimeout(()=>{t.classList.add('hide');setTimeout(()=>t.remove(),350)},3000);
+}
+
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  let valid=true;
+
+  const nume=document.getElementById('nume');
+  const email=document.getElementById('email');
+  const subiect=document.getElementById('subiect');
+  const mesaj=document.getElementById('mesaj');
+
+  // Reset errors
+  document.querySelectorAll('[id$="Err"]').forEach(el=>el.classList.add('hidden'));
+  [nume,email,subiect,mesaj].forEach(el=>el.style.borderColor='');
+
+  if(!nume.value.trim()){
+    document.getElementById('numeErr').classList.remove('hidden');
+    nume.style.borderColor='#7B2D2D';valid=false;
+  }
+  if(!email.value.trim()||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)){
+    document.getElementById('emailErr').classList.remove('hidden');
+    email.style.borderColor='#7B2D2D';valid=false;
+  }
+  if(!subiect.value){
+    document.getElementById('subiectErr').classList.remove('hidden');
+    subiect.style.borderColor='#7B2D2D';valid=false;
+  }
+  if(!mesaj.value.trim()){
+    document.getElementById('mesajErr').classList.remove('hidden');
+    mesaj.style.borderColor='#7B2D2D';valid=false;
+  }
+
+  if(!valid)return;
+
+  showToast('Mesajul tău a fost trimis!');
+  this.reset();
+});
+</script>
+</body>
+</html>

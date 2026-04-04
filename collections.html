@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nido Home — Colecția Noastră</title>
+<link rel="icon" type="image/svg+xml" href="brand_assets/logo-nido-home.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{cream:'#F3F3EF','warm-taupe':'#D9D4C6','warm-taupe-dk':'#C5BFA8','dark-taupe':'#6C6158','brass':'#C3A848','grey-blue':'#737B7B','dark-wood':'#43221B'},fontFamily:{sans:['system-ui','sans-serif'],serif:['"EB Garamond"','Georgia','serif'],display:['"Playfair Display"','Georgia','serif']}}}}
+</script>
+<link rel="stylesheet" href="css/product-shared.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:system-ui,sans-serif;color:#43221B;background:#F3F3EF;overflow-x:hidden}
+.card{cursor:pointer;transition:transform .35s ease}.card:hover{transform:translateY(-4px)}
+.card-img{aspect-ratio:1;object-fit:cover;background:#E8E4DA;width:100%}
+.filter-btn{padding:6px 16px;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-family:'EB Garamond',serif;cursor:pointer;border:1px solid #D9D4C6;background:transparent;color:#6C6158;transition:all .3s}
+.filter-btn:hover,.filter-btn.active{background:#6C6158;color:#F3F3EF;border-color:#6C6158}
+.sort-select{padding:8px 14px;font-family:'EB Garamond',serif;font-size:13px;border:1px solid #D9D4C6;background:#F3F3EF;color:#43221B;outline:none;cursor:pointer;border-radius:4px}
+.heart-icon{width:24px;height:24px;cursor:pointer;transition:all .25s;color:#6C6158}
+.heart-icon.active svg{fill:#C3A848;stroke:#C3A848}
+.heart-icon:hover svg{fill:#C3A848;stroke:#C3A848}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-cream/95 backdrop-blur" id="nav" style="border-bottom:1px solid #D9D4C633">
+<div class="max-w-[1440px] mx-auto px-8 lg:px-16 flex items-center justify-between h-[68px]">
+<a href="index.html" class="no-underline shrink-0">
+<img src="brand_assets/logo-nido-home.svg" alt="NIDO HOME" style="height:48px;width:auto">
+</a>
+<div class="hidden md:flex items-center gap-[28px]">
+<a href="index.html" class="nav">Acasă</a><a href="collections.html" class="nav" style="color:#6C6158">Colecții</a><a href="index.html#story" class="nav">Povestea Noastră</a><a href="index.html#services" class="nav">Servicii</a><a href="index.html#journal" class="nav">Jurnal</a><a href="index.html#contact" class="nav">Contact</a></div>
+<div class="flex items-center gap-4 text-dark-wood">
+<button id="searchOpen" class="bg-transparent border-0 p-0 cursor-pointer text-dark-wood">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="8" r="5"/><path d="M21 21l-4.35-4.35"/></svg></button>
+<button id="wishToggle" class="bg-transparent border-0 p-0 cursor-pointer relative text-dark-wood">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+<span id="wishlist-badge" class="cart-badge" style="display:none"></span></button>
+<a href="cart.html" class="relative no-underline"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+<span id="cart-badge" class="cart-badge"></span></a></div>
+<button class="md:hidden text-dark-wood bg-transparent border-0 p-0" id="mbtn">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button></div>
+<div class="md:hidden hidden bg-cream border-t" id="mmenu">
+<div class="flex flex-col gap-4 p-6">
+<a href="index.html" class="nav">Acasă</a><a href="collections.html" class="nav" style="color:#6C6158">Colecții</a><a href="index.html#story" class="nav">Povestea Noastră</a><a href="index.html#services" class="nav">Servicii</a><a href="index.html#journal" class="nav">Jurnal</a><a href="index.html#contact" class="nav">Contact</a></div></div></nav>
+
+<!-- SEARCH MODAL -->
+<div id="searchModal" class="search-overlay" style="display:none" onclick="closeSearch(event)"></div>
+<div id="searchBox" class="search-box" style="display:none">
+<input type="text" id="searchInput" class="search-input" placeholder="Caută produse..." oninput="handleSearch(this.value)">
+<div id="searchResults" class="search-results" style="display:none"></div>
+</div>
+
+<!-- PAGE HEADER -->
+<section style="margin-top:68px;padding:64px 8px 40px" class="text-center">
+<div class="max-w-[800px] mx-auto reveal">
+<p class="font-serif text-[12px] tracking-[.4em] uppercase text-dark-taupe/50 mb-3">Produse</p>
+<h1 class="font-display text-[42px] sm:text-[56px] md:text-[68px] text-dark-wood leading-[1] mb-4">Colectia Noastra</h1>
+<div class="sep bg-warm-taupe mx-auto mb-5"></div>
+<p class="font-serif text-[17px] text-dark-taupe/60 leading-[1.8] max-w-lg mx-auto">Descoperă piese unice, create cu grijă și pasiune pentru spațiul tău.</p>
+</div>
+</section>
+
+<!-- FILTER & SORT BAR -->
+<section class="py-6 px-8 lg:px-16">
+<div class="max-w-[1400px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 reveal">
+<div class="flex flex-wrap items-center gap-3" id="filterBtns">
+<button class="filter-btn active" data-filter="all">Toate</button>
+<button class="filter-btn" data-filter="vaza">Vaze</button>
+<button class="filter-btn" data-filter="cesti">Cesti</button>
+<button class="filter-btn" data-filter="decoratiuni">Decoratiuni</button>
+</div>
+<div class="flex items-center gap-3">
+<label class="font-serif text-[12px] text-dark-taupe/50 tracking-wider uppercase">Sortează după:</label>
+<select id="sortSelect" class="sort-select">
+<option value="default">Implicit</option>
+<option value="name-asc">Nume (A-Z)</option>
+<option value="price-asc">Preț crescător</option>
+<option value="price-desc">Preț descrescător</option>
+</select>
+</div>
+</div>
+</section>
+<!-- PRODUCT GRID -->
+<section class="py-12 px-8 lg:px-16">
+<div class="max-w-[1400px] mx-auto">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="productGrid">
+
+<!-- Product 1: Ghivci Geometric -->
+<div class="card reveal" data-name="Ghivci Geometric" data-price="62" data-category="vaza" data-id="ghivci" data-img="https://image.pollinations.ai/prompt/geometric%20cream%20ceramic%20vase%20on%20clean%20cream%20background%2C%20interior%20photography%2C%20minimal%20design%2C%20Nido%20Home%20brand?width=400&height=400&nologo=true">
+<a href="ghivci-geometric.html" class="no-underline block">
+<div class="overflow-hidden mb-4" style="background:#E8E4DA">
+<img src="https://image.pollinations.ai/prompt/geometric%20cream%20ceramic%20vase%20on%20clean%20cream%20background%2C%20interior%20photography%2C%20minimal%20design%2C%20Nido%20Home%20brand?width=400&height=400&nologo=true" alt="Ghivci Geometric" class="card-img group-hover:scale-[1.04] transition-transform duration-600">
+</div>
+</a>
+<div class="flex items-start justify-between">
+<div>
+<a href="ghivci-geometric.html" class="no-underline"><p class="font-serif text-[16px] md:text-[18px] text-dark-wood mb-1">Ghivci Geometric</p></a>
+<p class="font-serif text-[13px] text-dark-taupe/50 tracking-wide">62 RON</p>
+</div>
+<button class="heart-icon" onclick="handleWishlistClick(this,'ghivci','Ghivci Geometric','62','https://image.pollinations.ai/prompt/geometric%20cream%20ceramic%20vase%20on%20clean%20cream%20background%2C%20interior%20photography%2C%20minimal%20design%2C%20Nido%20Home%20brand?width=400&height=400&nologo=true')" title="Adaugă în Wishlist">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+</button>
+</div>
+</div>
+
+<!-- Product 2: Cesti Ceramica -->
+<div class="card reveal" data-name="Cesti Ceramica" data-price="68" data-category="cesti" data-id="cesti" data-img="https://image.pollinations.ai/prompt/two%20handmade%20cream%20ceramic%20cups%20minimalist%20photo%2C%20interior%20photography%2C%20Nido%20Home%20brand?width=400&height=400&nologo=true">
+<a href="cesti-ceramica.html" class="no-underline block">
+<div class="overflow-hidden mb-4" style="background:#E8E4DA">
+<img src="https://image.pollinations.ai/prompt/two%20handmade%20cream%20ceramic%20cups%20minimalist%20photo%2C%20interior%20photography%2C%20Nido%20Home%20brand?width=400&height=400&nologo=true" alt="Cesti Ceramica" class="card-img group-hover:scale-[1.04] transition-transform duration-600">
+</div>
+</a>
+<div class="flex items-start justify-between">
+<div>
+<a href="cesti-ceramica.html" class="no-underline"><p class="font-serif text-[16px] md:text-[18px] text-dark-wood mb-1">Cesti Ceramica</p></a>
+<p class="font-serif text-[13px] text-dark-taupe/50 tracking-wide">68 RON</p>
+</div>
+<button class="heart-icon" onclick="handleWishlistClick(this,'cesti','Cesti Ceramica','68','https://image.pollinations.ai/prompt/two%20handmade%20cream%20ceramic%20cups%20minimalist%20photo%2C%20interior%20photography%2C%20Nido%20Home%20brand?width=400&height=400&nologo=true')" title="Adaugă în Wishlist">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+</button>
+</div>
+</div>
+
+<!-- Product 3: Vas Sculpted -->
+<div class="card reveal" data-name="Vas Sculpted" data-price="95" data-category="vaza" data-id="vas" data-img="https://image.pollinations.ai/prompt/sculpted%20cream%20ceramic%20vase%20organic%20curved%20shape%2C%20interior%20photography%2C%20minimal%20design%2C%20Nido%20Home%20brand?width=400&height=400&nologo=true">
+<a href="vas-sculpted.html" class="no-underline block">
+<div class="overflow-hidden mb-4" style="background:#E8E4DA">
+<img src="https://image.pollinations.ai/prompt/sculpted%20cream%20ceramic%20vase%20organic%20curved%20shape%2C%20interior%20photography%2C%20minimal%20design%2C%20Nido%20Home%20brand?width=400&height=400&nologo=true" alt="Vas Sculpted" class="card-img group-hover:scale-[1.04] transition-transform duration-600">
+</div>
+</a>
+<div class="flex items-start justify-between">
+<div>
+<a href="vas-sculpted.html" class="no-underline"><p class="font-serif text-[16px] md:text-[18px] text-dark-wood mb-1">Vas Sculpted</p></a>
+<p class="font-serif text-[13px] text-dark-taupe/50 tracking-wide">95 RON</p>
+</div>
+<button class="heart-icon" onclick="handleWishlistClick(this,'vas','Vas Sculpted','95','https://image.pollinations.ai/prompt/sculpted%20cream%20ceramic%20vase%20organic%20curved%20shape%2C%20interior%20photography%2C%20minimal%20design%2C%20Nido%20Home%20brand?width=400&height=400&nologo=true')" title="Adaugă în Wishlist">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+</button>
+</div>
+</div>
+
+<!-- Product 4: Bol Artizanal -->
+<div class="card reveal" data-name="Bol Artizanal" data-price="45" data-category="decoratiuni" data-id="bol" data-img="https://image.pollinations.ai/prompt/handcrafted%20ceramic%20bowl%20earth%20tones%20artisan%20craft%2C%20interior%20photography%2C%20minimal%20design%2C%20Nido%20Home%20brand?width=400&height=400&nologo=true">
+<a href="#" class="no-underline block">
+<div class="overflow-hidden mb-4" style="background:#E8E4DA">
+<img src="https://image.pollinations.ai/prompt/handcrafted%20ceramic%20bowl%20earth%20tones%20artisan%20craft%2C%20interior%20photography%2C%20minimal%20design%2C%20Nido%20Home%20brand?width=400&height=400&nologo=true" alt="Bol Artizanal" class="card-img group-hover:scale-[1.04] transition-transform duration-600">
+</div>
+</a>
+<div class="flex items-start justify-between">
+<div>
+<a href="#" class="no-underline"><p class="font-serif text-[16px] md:text-[18px] text-dark-wood mb-1">Bol Artizanal</p></a>
+<p class="font-serif text-[13px] text-dark-taupe/50 tracking-wide">45 RON</p>
+</div>
+<button class="heart-icon" onclick="handleWishlistClick(this,'bol','Bol Artizanal','45','https://image.pollinations.ai/prompt/handcrafted%20ceramic%20bowl%20earth%20tones%20artisan%20craft%2C%20interior%20photography%2C%20minimal%20design%2C%20Nido%20Home%20brand?width=400&height=400&nologo=true')" title="Adaugă în Wishlist">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+</button>
+</div>
+</div>
+
+<!-- Product 5: Farfurie Rustică -->
+<div class="card reveal" data-name="Farfurie Rustică" data-price="85" data-category="decoratiuni" data-id="farfurie" data-img="https://image.pollinations.ai/prompt/rustic%20ceramic%20plate%20warm%20natural%20clay%20tones%20handcrafted%2C%20interior%20photography%2C%20Nido%20Home%20brand?width=400&height=400&nologo=true">
+<a href="#" class="no-underline block">
+<div class="overflow-hidden mb-4" style="background:#E8E4DA">
+<img src="https://image.pollinations.ai/prompt/rustic%20ceramic%20plate%20warm%20natural%20clay%20tones%20handcrafted%2C%20interior%20photography%2C%20Nido%20Home%20brand?width=400&height=400&nologo=true" alt="Farfurie Rustică" class="card-img group-hover:scale-[1.04] transition-transform duration-600">
+</div>
+</a>
+<div class="flex items-start justify-between">
+<div>
+<a href="#" class="no-underline"><p class="font-serif text-[16px] md:text-[18px] text-dark-wood mb-1">Farfurie Rustică</p></a>
+<p class="font-serif text-[13px] text-dark-taupe/50 tracking-wide">85 RON</p>
+</div>
+<button class="heart-icon" onclick="handleWishlistClick(this,'farfurie','Farfurie Rustică','85','https://image.pollinations.ai/prompt/rustic%20ceramic%20plate%20warm%20natural%20clay%20tones%20handcrafted%2C%20interior%20photography%2C%20Nido%20Home%20brand?width=400&height=400&nologo=true')" title="Adaugă în Wishlist">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+</button>
+</div>
+</div>
+
+<!-- Product 6: Vaza Minimalistă -->
+<div class="card reveal" data-name="Vaza Minimalistă" data-price="120" data-category="vaza" data-id="vazamin" data-img="https://image.pollinations.ai/prompt/tall%20minimalist%20ceramic%20vase%20neutral%20warm%20tones%20contemporary%2C%20interior%20photography%2C%20Nido%20Home%20brand?width=400&height=400&nologo=true">
+<a href="#" class="no-underline block">
+<div class="overflow-hidden mb-4" style="background:#E8E4DA">
+<img src="https://image.pollinations.ai/prompt/tall%20minimalist%20ceramic%20vase%20neutral%20warm%20tones%20contemporary%2C%20interior%20photography%2C%20Nido%20Home%20brand?width=400&height=400&nologo=true" alt="Vaza Minimalistă" class="card-img group-hover:scale-[1.04] transition-transform duration-600">
+</div>
+</a>
+<div class="flex items-start justify-between">
+<div>
+<a href="#" class="no-underline"><p class="font-serif text-[16px] md:text-[18px] text-dark-wood mb-1">Vaza Minimalistă</p></a>
+<p class="font-serif text-[13px] text-dark-taupe/50 tracking-wide">120 RON</p>
+</div>
+<button class="heart-icon" onclick="handleWishlistClick(this,'vazamin','Vaza Minimalistă','120','https://image.pollinations.ai/prompt/tall%20minimalist%20ceramic%20vase%20neutral%20warm%20tones%20contemporary%2C%20interior%20photography%2C%20Nido%20Home%20brand?width=400&height=400&nologo=true')" title="Adaugă în Wishlist">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+</button>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- NO RESULTS MESSAGE -->
+<div id="noResults" class="hidden text-center py-16 px-8">
+<p class="font-serif text-[18px] text-dark-taupe/60">Nu s-au găsit produse în această categorie.</p>
+</div>
+<!-- NEWSLETTER -->
+<section class="py-24 md:py-28 px-8 lg:px-16" style="background:#EBE8E1">
+<div class="max-w-[560px] mx-auto text-center reveal">
+<p class="font-serif text-[12px] tracking-[.35em] uppercase text-dark-taupe/50 mb-3">Newsletter</p>
+<h2 class="font-display text-[26px] md:text-[32px] text-dark-wood mb-3">Rămâi Alături De Noi</h2>
+<p class="font-serif text-[14px] text-grey-blue/60 leading-[1.7] mb-8">Abonează-te pentru ultimele noutăți și oferte exclusive.</p>
+<form class="flex flex-col sm:flex-row gap-3" onsubmit="event.preventDefault()">
+<input type="email" placeholder="Email-ul tău..." class="flex-1 px-5 py-3 bg-cream border border-warm-taupe/40 text-[14px] text-dark-wood font-serif placeholder:text-dark-taupe/35 focus:outline-none focus:border-brass transition-colors">
+<button class="btn whitespace-nowrap" style="font-size:11px;padding:13px 30px;letter-spacing:2px">Abonează-te</button></form>
+</div></section>
+
+<!-- FOOTER -->
+<footer class="py-16 md:py-20 px-8 lg:px-16" style="background:#43221B">
+<div class="max-w-[1400px] mx-auto">
+<div class="grid md:grid-cols-4 gap-12 mb-14">
+<div class="md:col-span-1">
+<img src="brand_assets/logo-nido-home.svg" alt="NIDO HOME" style="height:46px;width:auto;filter:brightness(0) saturate(100%) invert(88%) sepia(10%) saturate(300%) hue-rotate(10deg) brightness(92%) contrast(88%);opacity:.5;margin-bottom:16px">
+<div class="flex gap-3 text-warm-taupe/35">
+<a href="#" class="hover:text-warm-taupe/80 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+<a href="#" class="hover:text-warm-taupe/80 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+<a href="#" class="hover:text-warm-taupe/80 transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 7c-3 0-5 2.5-5 5 0 1.5.7 2.6 1.8 3.2l.3-2.2c.2-.8.5-1.5.5-2.2"/></svg></a></div></div>
+<div><p class="font-serif text-[10px] tracking-[.2em] uppercase text-warm-taupe/45 mb-3">Linkuri</p>
+<div class="space-y-2"><a href="index.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Acasă</a><a href="collections.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Colecții</a><a href="index.html#story" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Povestea Noastră</a><a href="index.html#journal" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Jurnal</a></div></div>
+<div><p class="font-serif text-[10px] tracking-[.2em] uppercase text-warm-taupe/45 mb-3">Legal</p>
+<div class="space-y-2"><a href="terms.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Termeni și Condiții</a><a href="shipping.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Livrare</a><a href="privacy.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Confidențialitate</a><a href="faq.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">FAQ</a></div></div>
+<div><p class="font-serif text-[10px] tracking-[.2em] uppercase text-warm-taupe/45 mb-3">Contact</p>
+<div class="space-y-2 font-serif text-[13px] text-warm-taupe/30"><p>+40 712 345 678</p><p>hello@nidohome.ro</p><p>București, România</p></div></div>
+</div>
+<div class="border-t border-warm-taupe/10 pt-7 flex flex-col md:flex-row justify-between items-center gap-2">
+<p class="font-serif text-[11px] text-warm-taupe/20 tracking-[.1em]">© 2026 Nido Home. Toate drepturile rezervate.</p>
+<p class="font-serif text-[11px] text-warm-taupe/10 tracking-[.1em]">Design de Nido Home Creative Studio</p></div>
+</div></footer>
+
+<!-- TOAST CONTAINER -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="js/cart.js"></script>
+<script src="js/wishlist.js"></script>
+<script>
+// Mobile menu
+const mbtn = document.getElementById('mbtn');
+const mmenu = document.getElementById('mmenu');
+if (mbtn) {
+  mbtn.addEventListener('click', () => { mmenu.classList.toggle('hidden'); });
+}
+
+// Scroll reveal
+const rv = document.querySelectorAll('.reveal');
+const ob = new IntersectionObserver((entries) => {
+  entries.forEach(x => {
+    if (x.isIntersecting) { x.target.classList.add('active'); ob.unobserve(x.target); }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+rv.forEach(el => ob.observe(el));
+setTimeout(() => { rv.forEach(el => { if (!el.classList.contains('active')) el.classList.add('active'); }); }, 2500);
+
+// Nav shadow
+const nv = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nv.style.boxShadow = window.pageYOffset > 10 ? '0 1px 12px rgba(67,34,27,.04)' : 'none';
+}, { passive: true });
+
+// Toast function
+function showToast(msg) {
+  const c = document.getElementById('toastContainer');
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.textContent = msg;
+  c.appendChild(t);
+  setTimeout(() => { t.classList.add('hide'); }, 2200);
+  setTimeout(() => { t.remove(); }, 2600);
+}
+
+// Wishlist handler for collection cards
+function handleWishlistClick(btnEl, id, name, price, img) {
+  const added = toggleWishlist(id, name, price, img);
+  btnEl.classList.toggle('active', added);
+}
+
+// Initialize wishlist heart states on load
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.heart-icon').forEach(btn => {
+    const id = btn.getAttribute('onclick').match(/'([a-z0-9]+)'/)?.[0]?.replace(/'/g, '');
+    // Find parent card to get data attributes
+    const card = btn.closest('.card');
+    if (!card) return;
+    const cardId = card.dataset.id;
+    if (cardId && isWished(cardId)) {
+      btn.classList.add('active');
+    }
+  });
+});
+
+// Filter buttons
+const filterBtns = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.card');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applyFilters();
+  });
+});
+
+function applyFilters() {
+  const activeFilter = document.querySelector('.filter-btn.active')?.dataset.filter || 'all';
+  let visibleCount = 0;
+  cards.forEach(card => {
+    const cat = card.dataset.category;
+    const match = activeFilter === 'all' || cat === activeFilter;
+    card.style.display = match ? '' : 'none';
+    if (match) visibleCount++;
+  });
+  document.getElementById('noResults').classList.toggle('hidden', visibleCount > 0);
+}
+
+// Sort
+const sortSelect = document.getElementById('sortSelect');
+sortSelect.addEventListener('change', () => { applySorting(); });
+
+function applySorting() {
+  const grid = document.getElementById('productGrid');
+  const val = sortSelect.value;
+  const sorted = [...cards].filter(c => c.closest('#productGrid'));
+
+  sorted.sort((a, b) => {
+    if (val === 'name-asc') return a.dataset.name.localeCompare(b.dataset.name, 'ro');
+    if (val === 'price-asc') return a.dataset.price - b.dataset.price;
+    if (val === 'price-desc') return b.dataset.price - a.dataset.price;
+    return 0;
+  });
+
+  sorted.forEach(card => grid.appendChild(card));
+}
+
+// Search modal
+const searchOpen = document.getElementById('searchOpen');
+const searchModal = document.getElementById('searchModal');
+const searchBox = document.getElementById('searchBox');
+
+if (searchOpen) {
+  searchOpen.addEventListener('click', () => {
+    searchModal.style.display = 'block';
+    searchBox.style.display = 'block';
+    document.getElementById('searchInput').focus();
+  });
+}
+
+function closeSearch(e) {
+  if (e.target === searchModal || e.target === searchBox) {
+    searchModal.style.display = 'none';
+    searchBox.style.display = 'none';
+    document.getElementById('searchInput').value = '';
+    document.getElementById('searchResults').style.display = 'none';
+  }
+}
+
+// Close search on Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    searchModal.style.display = 'none';
+    searchBox.style.display = 'none';
+    document.getElementById('searchResults').style.display = 'none';
+  }
+});
+
+function handleSearch(query) {
+  const container = document.getElementById('searchResults');
+  if (!query.trim()) { container.style.display = 'none'; return; }
+  const q = query.toLowerCase();
+  const results = [];
+  cards.forEach(card => {
+    const name = card.dataset.name.toLowerCase();
+    if (name.includes(q)) {
+      results.push({
+        name: card.dataset.name,
+        price: card.dataset.price,
+        img: card.dataset.img,
+        id: card.dataset.id,
+        card: card
+      });
+    }
+  });
+  if (results.length === 0) {
+    container.style.display = 'block';
+    container.innerHTML = '<div class="search-empty">Niciun rezultat găsit.</div>';
+    return;
+  }
+  container.style.display = 'block';
+  container.innerHTML = results.map(r =>
+    `<a href="collections.html" class="search-result-item" onclick="event.preventDefault();document.querySelector('[data-id=\\'${r.id}\\']')?.scrollIntoView({behavior:'smooth',block:'center'})">
+      <img src="${r.img}" alt="${r.name}">
+      <div>
+        <p class="font-serif text-[14px] text-dark-wood">${r.name}</p>
+        <p class="font-serif text-[13px] text-dark-taupe/50">${r.price} RON</p>
+      </div>
+    </a>`
+  ).join('');
+}
+</script>
+</body>
+</html>

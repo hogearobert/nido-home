@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Despre Noi — Nido Home</title>
+<meta name="description" content="Descoperă povestea Nido Home — design interior românesc, ceramică artizanală și produse unicat pentru spațiul tău.">
+<link rel="icon" type="image/svg+xml" href="brand_assets/logo-nido-home.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{cream:'#F3F3EF','warm-taupe':'#D9D4C6','warm-taupe-dk':'#C5BFA8','dark-taupe':'#6C6158','brass':'#C3A848','grey-blue':'#737B7B','dark-wood':'#43221B'},fontFamily:{sans:['system-ui','sans-serif'],serif:['"EB Garamond"','Georgia','serif'],display:['"Playfair Display"','Georgia','serif']}}}}
+</script>
+<link rel="stylesheet" href="css/product-shared.css">
+<style>
+html{scroll-behavior:smooth}
+body{font-family:system-ui,sans-serif;color:#43221B;background:#F3F3EF;overflow-x:hidden}
+.timeline-line{position:absolute;left:20px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,#D9D4C6,#D9D4C6,transparent)}
+@media(min-width:768px){.timeline-line{left:50%;transform:translateX(-50%)}}
+.timeline-dot{position:absolute;left:14px;width:13px;height:13px;border-radius:50%;background:#C3A848;border:3px solid #F3F3EF;z-index:2}
+@media(min-width:768px){.timeline-dot{left:50%;transform:translateX(-50%)}}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-cream/95 backdrop-blur" id="nav" style="border-bottom:1px solid #D9D4C633">
+<div class="max-w-[1440px] mx-auto px-8 lg:px-16 flex items-center justify-between h-[68px]">
+<a href="index.html" class="shrink-0 no-underline">
+<img src="brand_assets/logo-nido-home.svg" alt="NIDO HOME" style="height:48px;width:auto">
+</a>
+<div class="hidden md:flex items-center gap-[28px]">
+<a href="index.html" class="nav">Acasă</a>
+<a href="index.html#collection" class="nav">Colecții</a>
+<a href="index.html#story" class="nav">Povestea Noastră</a>
+<a href="about.html" class="nav" style="color:#6C6158">Despre Noi</a>
+<a href="cart.html" class="nav relative">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+  <span id="cart-badge" class="cart-badge"></span>
+</a>
+</div>
+<div class="flex items-center gap-4 text-dark-wood">
+<div class="relative">
+<a href="#" class="text-dark-wood no-underline heart-btn" id="wishlist-btn">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+  <span id="wishlist-badge" class="cart-badge" style="display:none;background:#737B7B"></span>
+</a>
+</div>
+</div>
+<button class="md:hidden text-dark-wood bg-transparent border-0 p-0" id="mbtn">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button></div>
+<div class="md:hidden hidden bg-cream border-t" id="mmenu">
+<div class="flex flex-col gap-4 p-6">
+<a href="index.html" class="nav">Acasă</a>
+<a href="index.html#collection" class="nav">Colecții</a>
+<a href="about.html" class="nav" style="color:#6C6158">Despre Noi</a>
+<a href="cart.html" class="nav">Coș</a>
+</div></div></nav>
+
+<!-- 1. HERO — Full-bleed with overlay -->
+<section style="margin-top:68px">
+<div class="relative w-full overflow-hidden" style="height:70vh;min-height:480px">
+<img src="brand_assets/Website/hero-image.jpeg" alt="Povestea Nido Home" class="absolute inset-0 w-full h-full object-cover" style="object-position:50% center">
+<div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(67,34,27,.40) 0%,rgba(67,34,27,.20) 40%,rgba(67,34,27,.35) 100%)"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+<p class="font-serif text-[12px] tracking-[.5em] uppercase text-cream/70 mb-4" style="opacity:0;animation:fadeUp .9s .2s ease-out forwards">Desdepre Noi</p>
+<h1 class="font-display text-[48px] sm:text-[64px] md:text-[86px] text-cream leading-[.88] tracking-[-.02em] mb-3" style="opacity:0;animation:fadeUp .9s .35s ease-out forwards">Povestea<br>Noastră</h1>
+<p class="font-serif text-[16px] md:text-[18px] text-cream/80 tracking-[.12em] mb-1" style="opacity:0;animation:fadeUp .9s .5s ease-out forwards">Cultivăm Spații din 2024</p>
+</div>
+</div>
+</section>
+
+<!-- 2. OUR MISSION — Two-column -->
+<section class="py-20 md:py-28 px-8 lg:px-16">
+<div class="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+<div class="reveal overflow-hidden" style="background:#E8E4DA;aspect-ratio:4/5">
+<img src="brand_assets/Website/1.jpeg" alt="Atelierul Nido Home" class="w-full h-full object-cover">
+</div>
+<div class="reveal">
+<p class="font-serif text-[11px] tracking-[.35em] uppercase text-brass mb-4">Misiunea Noastră</p>
+<h2 class="font-display text-[28px] sm:text-[34px] md:text-[40px] text-dark-wood leading-[1.1] mb-6">Meșteșug românesc,<br>design contemporan</h2>
+<div class="sep bg-warm-taupe mb-6" style="width:45px"></div>
+<p class="font-serif text-[16px] text-dark-taupe/60 leading-[1.85] mb-5">
+Nido Home s-a născut din dorința de a aduce autenticitate în spațiile contemporane.
+Credem că fiecare obiect dintr-o casă spune o poveste — de aceea creăm produse din
+materiale sustenabile, lucrate cu grijă de meșteri locali.
+</p>
+<p class="font-serif text-[16px] text-dark-taupe/60 leading-[1.85] mb-5">
+Fiecare piesă din colecția noastră trece prin mâinile artizanilor care transformă
+argila, lemnul și fibrele naturale în obiecte cu suflet. Respectăm tradițiile românești
+de ceramică și țesut, adaptându-le pentru gustul modern.
+</p>
+<p class="font-serif text-[16px] text-dark-taupe/60 leading-[1.85]">
+Sustenabilitatea nu este un trend pentru noi — este un principiu. Folosim materiale
+naturale, reciclabile, și colaborăm doar cu producători care împărtășesc aceeași
+viziune asupra responsabilității față de mediu.
+</p>
+</div>
+</div>
+</section>
+
+<!-- 3. FULL-WIDTH IMAGE + QUOTE -->
+<section class="relative py-28 md:py-36">
+<div class="absolute inset-0" style="background:url('brand_assets/Website/2.jpeg') center/cover no-repeat;filter:brightness(0.88)"></div>
+<div class="relative z-10 text-center max-w-3xl mx-auto px-8 reveal">
+<p class="font-serif text-[14px] tracking-[.35em] uppercase text-dark-wood/50 mb-6">Filosofia Noastră</p>
+<h2 class="font-display text-[28px] sm:text-[34px] md:text-[44px] text-dark-wood leading-[1.15] mb-5">
+„Spațiile bine gândite schimbă<br>modul în care trăim."
+</h2>
+<div class="sep bg-warm-taupe mx-auto" style="width:45px;opacity:.5"></div>
+</div>
+</section>
+
+<!-- 4. OUR VALUES — 3 cards -->
+<section class="py-20 md:py-28 px-8 lg:px-16" style="background:#EBE8E1">
+<div class="max-w-[1400px] mx-auto">
+<div class="text-center mb-16 reveal">
+<p class="font-serif text-[12px] tracking-[.35em] uppercase text-dark-taupe/50 mb-3">Valorile Noastre</p>
+<h2 class="font-display text-[32px] md:text-[42px] text-dark-wood leading-[1.05]">În ce credem</h2>
+<div class="sep bg-warm-taupe mt-5"></div>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Value 1 -->
+<div class="reveal bg-cream p-8 lg:p-10 text-center group">
+<div class="w-14 h-14 mx-auto mb-6 text-brass flex items-center justify-center">
+<svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.3">
+<circle cx="28" cy="28" r="20"/>
+<path d="M28 12c-6 6-10 12-10 16a10 10 0 0020 0c0-4-4-10-10-16z"/>
+<path d="M24 34c0 2 1.8 4 4 4s4-2 4-4"/>
+</svg>
+</div>
+<h3 class="font-display text-[20px] text-dark-wood mb-3">Sustenabilitate</h3>
+<p class="font-serif text-[14px] text-dark-taupe/60 leading-[1.8]">
+Materiale naturale, reciclabile și procese care respectă mediul.
+Fiecare decizie pe care o luăm ține cont de amprenta pe care o lăsăm.
+</p>
+</div>
+<!-- Value 2 -->
+<div class="reveal bg-cream p-8 lg:p-10 text-center group">
+<div class="w-14 h-14 mx-auto mb-6 text-brass flex items-center justify-center">
+<svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.3">
+<path d="M28 8l5 12h12l-10 7.5 4 12.5L28 33 17 40l4-12.5L11 20h12z"/>
+</svg>
+</div>
+<h3 class="font-display text-[20px] text-dark-wood mb-3">Artizanat Local</h3>
+<p class="font-serif text-[14px] text-dark-taupe/60 leading-[1.8]">
+Colaborăm cu meșteri și artizani din România care păstrează vii
+tradițiile ceramicii și ale prelucrării materialelor naturale.
+</p>
+</div>
+<!-- Value 3 -->
+<div class="reveal bg-cream p-8 lg:p-10 text-center group">
+<div class="w-14 h-14 mx-auto mb-6 text-brass flex items-center justify-center">
+<svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.3">
+<path d="M8 5C8 5 8 5 12 5L44 5C48 5 48 5 48 8L48 48C48 48 48 51 44 51L12 51C8 51 8 51 8 48Z"/>
+<line x1="8" y1="20" x2="48" y2="20"/>
+<circle cx="28" cy="36" r="6"/>
+</svg>
+</div>
+<h3 class="font-display text-[20px] text-dark-wood mb-3">Design Fără Timp</h3>
+<p class="font-serif text-[14px] text-dark-taupe/60 leading-[1.8]">
+Creăm obiecte care nu se demodează. Linii curate, forme organice
+și o estetică ce traversează tendințele sezoniere.
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 5. TIMELINE -->
+<section class="py-20 md:py-28 px-8 lg:px-16">
+<div class="max-w-[1400px] mx-auto">
+<div class="text-center mb-16 reveal">
+<p class="font-serif text-[12px] tracking-[.35em] uppercase text-dark-taupe/50 mb-3">Parcursul Nostru</p>
+<h2 class="font-display text-[32px] md:text-[42px] text-dark-wood leading-[1.05]">Momente Cheie</h2>
+<div class="sep bg-warm-taupe mt-5"></div>
+</div>
+
+<div class="relative mt-16">
+<!-- Vertical line -->
+<div class="timeline-line"></div>
+
+<!-- 2024 -->
+<div class="relative mb-20 md:mb-24 reveal">
+<div class="timeline-dot" style="top:6px"></div>
+<div class="md:w-[calc(50%-40px)] md:ml-auto md:pl-12 pl-12 md:pl-12">
+<p class="font-serif text-[11px] tracking-[.4em] uppercase text-brass mb-2">2024</p>
+<h3 class="font-display text-[22px] md:text-[26px] text-dark-wood mb-3">Înființarea Nido Home</h3>
+<p class="font-serif text-[15px] text-dark-taupe/60 leading-[1.8] max-w-[480px]">
+Am început într-un mic atelier din București, cu vise mari și o pasiune
+pentru frumosul autentic. Primele piese de ceramică au fost modelate
+manual, cu răbdare și dedicație.
+</p>
+</div>
+</div>
+
+<!-- 2025 -->
+<div class="relative mb-20 md:mb-24 reveal">
+<div class="timeline-dot" style="background:#6C6158;top:6px"></div>
+<div class="md:w-[calc(50%-40px)] md:mr-auto md:pr-12 md:text-right pl-12 md:pl-0">
+<p class="font-serif text-[11px] tracking-[.4em] uppercase text-brass mb-2">2025</p>
+<h3 class="font-display text-[22px] md:text-[26px] text-dark-wood mb-3">Prima Colecție — „Sculpted Utility"</h3>
+<p class="font-serif text-[15px] text-dark-taupe/60 leading-[1.8] max-w-[480px] md:ml-auto">
+Am lansat prima colecție completă: vaze sculpturale, căni ceramice și
+ghivece geometrice. Fiecare produs creat în serie limitată, cu atenție
+la fiecare detaliu.
+</p>
+</div>
+</div>
+
+<!-- 2026 -->
+<div class="relative reveal">
+<div class="timeline-dot" style="background:#43221B;top:6px"></div>
+<div class="md:w-[calc(50%-40px)] md:ml-auto md:pl-12 pl-12">
+<p class="font-serif text-[11px] tracking-[.4em] uppercase text-brass mb-2">2026</p>
+<h3 class="font-display text-[22px] md:text-[26px] text-dark-wood mb-3">Extindere și Colecții Noi</h3>
+<p class="font-serif text-[15px] text-dark-taupe/60 leading-[1.8] max-w-[480px]">
+Am extins echipa, am mărit atelierul și pregătim noi colecții — textile
+naturale, obiecte din lemn și colaborări cu designeri români.
+Viitorul este luminos.
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 6. IMAGE GALLERY GRID -->
+<section class="py-16 px-8 lg:px-16" style="background:#EBE8E1">
+<div class="max-w-[1400px] mx-auto">
+<div class="text-center mb-12 reveal">
+<p class="font-serif text-[12px] tracking-[.35em] uppercase text-dark-taupe/50 mb-3">Galerie</p>
+<h2 class="font-display text-[32px] md:text-[42px] text-dark-wood leading-[1.05]">Imagini din Atelier</h2>
+<div class="sep bg-warm-taupe mt-5"></div>
+</div>
+<div class="grid md:grid-cols-3 gap-4 md:gap-6 reveal">
+<div class="overflow-hidden group" style="background:#E8E4DA;aspect-ratio:1">
+<img src="brand_assets/Website/3.jpeg" alt="Proces creativ" class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700">
+</div>
+<div class="overflow-hidden group" style="background:#E8E4DA;aspect-ratio:1">
+<img src="brand_assets/Website/4.jpeg" alt="Produse finite" class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700">
+</div>
+<div class="overflow-hidden group" style="background:#E8E4DA;aspect-ratio:1">
+<img src="brand_assets/Website/5.jpeg" alt="Spațiu de lucru" class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700">
+</div>
+</div>
+</div>
+</section>
+
+<!-- 7. TEAM / ATELIER SECTION -->
+<section class="py-20 md:py-28 px-8 lg:px-16">
+<div class="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+<div class="reveal">
+<p class="font-serif text-[11px] tracking-[.35em] uppercase text-brass mb-4">Atelierul</p>
+<h2 class="font-display text-[28px] sm:text-[34px] md:text-[40px] text-dark-wood leading-[1.1] mb-6">Unde prind viață<br>obiectele noastre</h2>
+<div class="sep bg-warm-taupe mb-6" style="width:45px"></div>
+<p class="font-serif text-[16px] text-dark-taupe/60 leading-[1.85] mb-5">
+Atelierul nostru este un spațiu luminos, plin de texturi și materiale naturale.
+Aici fiecare piesă este modelată, uscată, arsă și finisată manual.
+</p>
+<p class="font-serif text-[16px] text-dark-taupe/60 leading-[1.85] mb-5">
+Tocul rotativei, mirosul lutului umed și lumina care pătrunde prin ferestrele mari
+sunt ingredientele unei zile obișnuite de lucru. Nu folosim mașini —
+doar mâini, răbdare și pasiune.
+</p>
+<p class="font-serif text-[16px] text-dark-taupe/60 leading-[1.85]">
+Fiecare obiect poartă amprenta creatorului său. Este ceea ce face
+produsele Nido Home cu adevărat speciale — nu există două piese identice.
+</p>
+</div>
+<div class="reveal overflow-hidden" style="background:#E8E4DA;aspect-ratio:4/5">
+<img src="https://image.pollinations.ai/prompt/warm%20ceramic%20workshop%20interior%20with%20natural%20light%2C%20pottery%20wheel%20clay%20tools%20unfinished%20vases%20on%20wooden%20shelves%2C%20Romanian%20artisan%20space%2C%20cream%20taupe%20palette%2C%20interior%20photography%2C%20Nido%20Home%20brand%2C%20minimal%20design%2C%20professional%20photography%2C%20soft%20natural%20diffused%20lighting%2C%20editorial%20quality%2C%2085mm%20lens?width=600&height=750&nologo=true" alt="Atelierul Nido Home" class="w-full h-full object-cover">
+</div>
+</div>
+</section>
+
+<!-- 8. CTA SECTION -->
+<section class="py-20 md:py-28 px-8 lg:px-16 text-center" style="background:#EBE8E1">
+<div class="max-w-[600px] mx-auto reveal">
+<p class="font-serif text-[12px] tracking-[.35em] uppercase text-dark-taupe/50 mb-4">Explorează</p>
+<h2 class="font-display text-[28px] sm:text-[36px] md:text-[44px] text-dark-wood leading-[1.1] mb-5">Descoperă Colecția</h2>
+<div class="sep bg-warm-taupe mx-auto mb-8" style="width:45px"></div>
+<p class="font-serif text-[16px] text-dark-taupe/60 leading-[1.85] mb-10 max-w-[480px] mx-auto">
+Fiecare piesă a fost creată cu grijă și intenție. Află mai multe despre
+colecțiile noastre și găsește obiectul care completează spațiul tău.
+</p>
+<a href="index.html#collection" class="btn">Descoperă Colecția</a>
+</div>
+</section>
+
+<!-- 9. FOOTER -->
+<footer class="py-16 md:py-20 px-8 lg:px-16" style="background:#43221B">
+<div class="max-w-[1400px] mx-auto">
+<div class="grid md:grid-cols-4 gap-12 mb-14">
+<div class="md:col-span-1">
+<img src="brand_assets/logo-nido-home.svg" alt="NIDO HOME" style="height:46px;width:auto;filter:brightness(0) saturate(100%) invert(88%) sepia(10%) saturate(300%) hue-rotate(10deg) brightness(92%) contrast(88%);opacity:.5;margin-bottom:16px">
+<div class="flex gap-3 text-warm-taupe/35">
+<a href="#" class="hover:text-warm-taupe/80 transition-colors no-underline"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+<a href="#" class="hover:text-warm-taupe/80 transition-colors no-underline"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+<a href="#" class="hover:text-warm-taupe/80 transition-colors no-underline"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 7c-3 0-5 2.5-5 5 0 1.5.7 2.6 1.8 3.2l.3-2.2c.2-.8.5-1.5.5-2.2"/></svg></a>
+</div>
+</div>
+<div>
+<p class="font-serif text-[10px] tracking-[.2em] uppercase text-warm-taupe/45 mb-3">Linkuri</p>
+<div class="space-y-2">
+<a href="index.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Acasă</a>
+<a href="index.html#collection" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Colecții</a>
+<a href="about.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Despre Noi</a>
+<a href="index.html#journal" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Jurnal</a>
+</div>
+</div>
+<div>
+<p class="font-serif text-[10px] tracking-[.2em] uppercase text-warm-taupe/45 mb-3">Legal</p>
+<div class="space-y-2">
+<a href="terms.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Termeni și Condiții</a>
+<a href="shipping.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Livrare</a>
+<a href="privacy.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">Confidențialitate</a>
+<a href="faq.html" class="block font-serif text-[13px] text-warm-taupe/30 hover:text-warm-taupe/80 transition-colors no-underline">FAQ</a>
+</div>
+</div>
+<div>
+<p class="font-serif text-[10px] tracking-[.2em] uppercase text-warm-taupe/45 mb-3">Contact</p>
+<div class="space-y-2 font-serif text-[13px] text-warm-taupe/30">
+<p>+40 712 345 678</p>
+<p>hello@nidohome.ro</p>
+<p>București, România</p>
+</div>
+</div>
+</div>
+<div class="border-t border-warm-taupe/10 pt-7 flex flex-col md:flex-row justify-between items-center gap-2">
+<p class="font-serif text-[11px] text-warm-taupe/20 tracking-[.1em]">© 2026 Nido Home. Toate drepturile rezervate.</p>
+<p class="font-serif text-[11px] text-warm-taupe/10 tracking-[.1em]">Design de Nido Home Creative Studio</p>
+</div>
+</div>
+</footer>
+
+<script src="js/cart.js"></script>
+<script src="js/wishlist.js"></script>
+<script>
+// Mobile menu
+const mbtn=document.getElementById('mbtn'),mmenu=document.getElementById('mmenu');
+if(mbtn){mbtn.addEventListener('click',()=>{mmenu.classList.toggle('hidden');})}
+
+// Reveal on scroll
+const rv=document.querySelectorAll('.reveal');
+const ob=new IntersectionObserver(([...e])=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('active');ob.unobserve(x.target)}}),{threshold:.12,rootMargin:'0px 0px -30px 0px'});
+rv.forEach(el=>ob.observe(el));
+setTimeout(()=>rv.forEach(el=>{if(!el.classList.contains('active'))el.classList.add('active')}),2500);
+
+// Nav shadow on scroll
+const nv=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nv.style.boxShadow=window.pageYOffset>10?'0 1px 12px rgba(67,34,27,.04)':'none'},{passive:true});
+</script>
+</body>
+</html>
