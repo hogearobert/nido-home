@@ -125,3 +125,8 @@ Nido Home — a Romanian interior design / home decor brand website (`Cultivăm 
 - Remote: `https://github.com/hogearobert/nido-home`
 - Main branch
 - Vercel project: `nido-home-v2`
+- GitHub push triggers auto-deploy on Vercel
+
+## Gotchas
+- **Subagent commit issue:** Modelele free (OpenRouter) săr adesea pasul de `git commit` — raportează DONE dar nu execută commit-ul real. Verifică întotdeauna cu `git log --oneline -1`.
+- **Settings:** `ANTHROPIC_MODEL: stepfun/step-3.5-flash:free` via OpenRouter.
